@@ -125,7 +125,7 @@ class Messages extends CI_Controller
 	         
 	        $this->wb_template->assign('conversation', $conversation[0]);
 	        $this->wb_template->assign('user', extract_user($conversation[0]));
-	        
+	        	        
 	        // Generate their profile
 	        $this->wb_template->assign('profile_fragment', $this->load->view('app/profile/fragment', $this->wb_template->get(), true), true);
 	        	    	    

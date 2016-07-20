@@ -268,14 +268,21 @@ function decrypt_id($id = 0)
 // Fetch the User object that we are interacting with in a conversation
 function extract_user($conversation)
 {    
-    if ($conversation->user_a->id != who_am_i()->id OR isset($conversation->user_a->profile->first_name))
+    if (isset($conversation->user_a->profile->first_name) AND $conversation->user_a->id != who_am_i()->id)
     {
-        return $conversation->user_a;
+        $user = $conversation->user_a;
     }
     else
     {
-        return $conversation->user_b;
+        $user = $conversation->user_b;
     }
+    
+    if ($user->id == who_am_i()->id)
+    {
+        return who_am_i();
+    }
+    
+    return $user;
 }
 
 function profile_url($user)
@@ -338,10 +345,10 @@ function user_matches($response)
     {
         $users[] = $user->user;
         $user_ids[] = $user->user->id;
-    }    
-
+    }
+    
     $matches = api_endpoint('users/' . implode(';', $user_ids) . '/match');
-        
+
     for ($i = 0; $i < count($users); $i++)
     {
         $users[$i] = array_merge_recursive((array)$users[$i], (array)$matches[$i]);

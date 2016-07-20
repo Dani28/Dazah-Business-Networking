@@ -500,43 +500,46 @@ $(document).on('submit', '#send-message', function(event) {
 
 $(window).on('keydown', function(event) {
 	var textarea = $('#message-input');
-	if (textarea.val().length)
+	if (textarea.length)
 	{
-		if (event.which == 13 &&
-			(
+		if (textarea.val().length)
+		{
+			if (event.which == 13 &&
 				(
-					event.shiftKey === true ||
-					event.ctrlKey === true ||
-					event.altKey === true
+					(
+						event.shiftKey === true ||
+						event.ctrlKey === true ||
+						event.altKey === true
+					)
+					|| window.innerWidth < 992
 				)
-				|| window.innerWidth < 992
 			)
-		)
+			{
+				if (!$.trim($('#people-search').val()).length) {
+					event.preventDefault();
+					post_message($('#send-message'));
+				}
+			}
+		}
+		else if (!$('#people-search:focus').length)
 		{
-			if (!$.trim($('#people-search').val()).length) {
+			if (event.which == 40)
+			{
 				event.preventDefault();
-				post_message($('#send-message'));
+				var next_conversation = $('#active-conversations').find('.active').next();
+				if (next_conversation.length)
+				{
+					$(location).attr('href', next_conversation.attr('href'));
+				}
 			}
-		}
-	}
-	else if (!$('#people-search:focus').length)
-	{
-		if (event.which == 40)
-		{
-			event.preventDefault();
-			var next_conversation = $('#active-conversations').find('.active').next();
-			if (next_conversation.length)
+			else if (event.which == 38)
 			{
-				$(location).attr('href', next_conversation.attr('href'));
-			}
-		}
-		else if (event.which == 38)
-		{
-			event.preventDefault();
-			var prev_conversation = $('#active-conversations').find('.active').prev();
-			if (prev_conversation.length)
-			{
-				$(location).attr('href', prev_conversation.attr('href'));		
+				event.preventDefault();
+				var prev_conversation = $('#active-conversations').find('.active').prev();
+				if (prev_conversation.length)
+				{
+					$(location).attr('href', prev_conversation.attr('href'));		
+				}
 			}
 		}
 	}
