@@ -1,0 +1,1274 @@
+/************************/
+/* Customize This Stuff */
+/************************/
+
+body#web-app
+{
+	background-color: #F8F8F8;
+}
+
+body
+{
+	font-family: Roboto;
+	font-size: 16px;
+	line-height: 26px;
+	font-weight: 400;
+}
+
+/*******************/
+/* Navigation Menu */
+/*******************/
+
+nav.navbar-default
+{
+	border: none;
+	background-color: #4cb992;
+}
+
+nav a.navbar-brand
+{
+	letter-spacing: 5px;
+	text-transform: uppercase;
+	font-weight: 300;
+	color: white!important;
+}
+
+nav.navbar-default ul.dropdown-menu li a
+{
+	padding: 5px 15px;
+}
+
+nav.navbar-default ul.nav > li > a
+{
+	color: white!important;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+nav.navbar-default ul.nav > li.open > a
+{
+	background-color: #555!important;
+}
+
+/**************************/
+/* Mobile Navigation Menu */
+/**************************/
+
+nav.navbar-default #mobile-dropdown
+{
+	background-color: #4cb992;
+	padding: 5px;
+}
+
+nav.navbar-default #mobile-dropdown li a
+{
+	color: white;
+	padding: 3px;
+}
+
+nav.navbar-default #mobile-dropdown .navbar-nav > .active > a
+{
+	background-color: #555;
+}
+
+nav.navbar-default #mobile-dropdown .navbar-nav
+{
+	padding: 3px;	
+}
+
+/**************************/
+/* People Search Dropdown */
+/**************************/
+
+@media (min-width: 992px) {
+	.navbar-form .form-control {
+		width: 300px!important;
+	}
+}
+
+ul.ui-autocomplete
+{
+	max-height: 250px;
+	border-color: #ddd;
+	font-size: 14px;
+}
+
+li.ui-autocomplete-category
+{
+	background-color: #337ab7;
+	color: white!important;
+	border-bottom: 1px solid #ddd!important;
+	border-top: 1px solid #ddd!important;	
+}
+
+.ui-autocomplete li
+{
+	padding: 2px 5px!important;
+	color: #555;
+}
+
+li.ui-state-focus
+{
+	background-color: #F5F5F5!important;
+	border-bottom: 1px solid #ddd!important;
+	border-top: 1px solid #ddd!important;
+	color: #555!important;
+}
+
+/**********************/
+/* Keyboard Shortcuts */
+/**********************/
+
+#user-tools div.keyboard-shortcuts
+{
+	margin-top: 20px;
+}
+
+.keyboard-shortcuts ul
+{
+	padding-left: 20px;
+}
+
+/***********/
+/* Web App */
+/***********/
+
+div#user-profile,
+div#conversation-log
+{
+	background-color: white;
+	border-left: 1px solid #ddd;
+}
+
+/******************/
+/* Member Profile */
+/******************/
+
+div#profile-container div.empty-profile
+{
+	margin: 0;
+}
+
+div#profile-fragment div#profile-container
+{
+	padding: 0;
+}
+
+div#profile-container
+{
+	padding: 15px;
+}
+
+/****************/
+/* User Picture */
+/****************/
+
+div#user-profile img.img-circle.has-thumbshot
+{
+	position: absolute;
+	right: -25px;
+	bottom: -30px;
+	float: none;
+}
+
+div#user-profile img.img-circle
+{
+	border-radius: 50%!important;
+	width: 150px;
+	height: 150px;
+	position: static;
+	float: right;	
+	margin: 10px 25px 15px 15px;
+}
+
+@media screen and (max-width: 767px) {
+	
+	div#user-profile img.img-circle {
+		width: 80px!important;
+		height: 80px!important;
+	}
+	
+	div#user-profile div.position,
+	div#full-profile div#profile-container
+	{
+		padding: 0!important;
+	}
+}
+
+/****************/
+/* User Profile */
+/****************/
+
+#user-profile h1
+{
+	margin-top: 0;
+	font-weight: 300;
+	margin-bottom: 20px;
+}
+
+#user-profile address
+{
+	padding-top: 10px;
+	border-top: 1px solid #ddd;
+	margin-top: 20px;
+}
+
+/***********/
+/* Notices */
+/***********/
+
+.empty-profile
+{
+	text-align: center;
+	padding: 10px;
+	margin: 10px 0;
+}
+
+.empty-profile .fa
+{
+	font-size: 72px;
+	margin: 20px 0;
+}
+
+/*****************/
+/* Online status */
+/*****************/
+
+span.status
+{
+	color: #eee;
+}
+
+span.status.online
+{
+	color: #4cb992;
+}
+
+a.active span.status.online
+{
+	text-shadow:
+		-1px -1px 0 white,  
+		1px -1px 0 white,
+		-1px 1px 0 white,
+		1px 1px 0 white;
+}
+
+/*********************/
+/* Conversation List */
+/*********************/
+
+a.list-group-item
+{
+	background-color: transparent;	
+}
+
+a.list-group-item:hover
+{
+	background-color: white;
+	border-color: #ddd!important;
+}
+
+/* Main conversations page */
+
+#conversation-list.all-conversations a.list-group-item:hover,
+#conversation-list.search-conversations a.list-group-item:hover,
+#member-list a.list-group-item:hover
+{
+	background-color: #f5f5f5;
+	border-color: transparent!important;
+}
+
+#conversation-list.all-conversations a
+{
+	padding: 10px;
+}
+
+#conversation-list.search-conversations a,
+#member-list.search-conversations a
+{
+	padding: 20px;
+}
+
+
+
+/*********************/
+/* Navigation Search */
+/*********************/
+
+nav.navbar-default .btn
+{
+	border-color: white;
+	margin-right: 10px;
+}
+
+/***********************/
+/* Navigation Dropdown */
+/***********************/
+
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus
+{
+	background-color: #4cb992!important;
+}
+
+/********************************/
+/* Conversation List in Sidebar */
+/********************************/
+
+#conversation-list.sidebar-offcanvas
+{
+	background-color: #555;	
+}
+
+#conversation-list.sidebar-offcanvas a
+{
+	background-color: #555;	
+	color: #eee;
+	border: none!important;
+	font-size: 14px;
+}
+
+#conversation-list.sidebar-offcanvas a:hover,
+#conversation-list.sidebar-offcanvas a:active
+{
+	background-color: #444;
+}
+
+#conversation-list.sidebar-offcanvas div.list-group-item
+{
+	background-color: #444!important;
+	border: none!important;
+	color: #777;
+	text-transform: uppercase;
+	font-size: 14px;
+}
+
+#conversation-list.sidebar-offcanvas a.active
+{
+	background-color: #4cb992;
+	border-color: white!important;
+}
+
+/*****************************/
+/* Add Conversation or Group */
+/*****************************/
+
+#conversation-list.sidebar-offcanvas a.add
+{
+	float: right;
+	background-color: #555!important;
+	position: absolute;
+	right: 10px;
+	padding: 5px 0;
+	bottom: 0;
+	color: #4cb992!important;
+	text-transform: none;
+	text-decoration: none;
+	width: 80px;
+	text-align: center;
+}
+
+#conversation-list.sidebar-offcanvas div.list-group-item > span
+{
+	padding-right: 80px;
+	display: inline-block;
+}
+
+#conversation-list.sidebar-offcanvas a.more
+{
+	background-color: #555!important;
+	font-size: 24px;
+	margin-bottom: 10px;
+	display: block;
+}
+
+#conversation-list.sidebar-offcanvas a.more:hover
+{
+	color: #4cb992;
+}
+
+/**********************/
+/* Message Containers */
+/**********************/
+
+div#conversation-log div.panel-primary
+{
+	border-color: #4cb992;
+}
+
+div#conversation-log div.panel-primary > div.panel-heading
+{
+	background-color: #4cb992;
+	border-color: #4cb992;
+}
+
+/**************************************/
+/* Profile triggered by user name bar */
+/**************************************/
+
+.toggle-profile
+{
+	position: static;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	padding: 10px;
+	font-size: 18px;
+	margin-bottom: 0;
+	display: block;
+	text-decoration: none!important;
+	border-bottom: 1px solid #afd9ee;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;	
+}
+
+/******************************************/
+/* Optionally Resize Paddings and Margins */
+/******************************************/
+
+body
+{
+	padding-bottom: 50px;
+}
+
+.spaced
+{
+	margin: 20px 0;
+}
+
+.bottom-spaced
+{
+	margin: 0 0 20px 0;
+}
+
+.has-margin
+{
+	padding: 10px;
+}
+
+span.fa.fa-fw
+{
+	margin-right: 5px;
+}
+
+nav.navbar-default ul#notifications-menu.dropdown-menu
+{
+	width: 450px;
+	max-height: 400px;
+}
+
+div#meet-helper
+{
+	padding-top: 10px;
+}
+
+#user-tools .btn-block
+{
+	padding: 20px;
+}
+
+.btn-block.btn-lg
+{
+	margin-bottom: 10px;
+}
+
+#conversation-list a.list-group-item,
+#member-list a.list-group-item
+{
+	padding: 5px 20px;
+}
+
+/******************/
+/* Mobile Version */
+/******************/
+
+@media screen and (max-width: 767px) {
+	body
+	{
+		font-size: 14px!important;
+		line-height: 24px!important;
+	}
+	
+	.spaced
+	{
+		margin: 10px 0!important;
+	}
+}
+
+/******************************/
+/* Currently Online Indicator */
+/******************************/
+
+#conversation-list span.status,
+#member-list span.status
+{
+	margin-right: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*************************************************************/
+/* Do Not Touch Anything Below This Line *********************/
+/*************************************************************/
+
+body#web-app
+{
+	overflow-y: hidden;
+	padding-bottom: 0;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+body
+{
+	padding: 0;
+	word-break: break-word;
+	overflow-x: hidden;
+}
+
+textarea
+{
+	resize: none;
+}
+
+/******************************/
+/* Some stuff for us to reuse */
+/******************************/
+
+.position
+{
+	position: relative;
+}
+
+/***************/
+/* Menu Navbar */
+/***************/
+
+nav.navbar-default ul.dropdown-menu
+{
+	padding: 0;
+	right: 0;
+	left: auto;
+}
+
+nav.navbar-default ul.dropdown-menu li.divider
+{
+	margin: 0;
+}
+
+body#home nav.navbar-default,
+body#web-app nav.navbar-default
+{
+	margin-bottom: 0;		
+}
+
+nav.navbar-default
+{
+	z-index: 5;
+}
+
+nav a.user-dropdown
+{
+	padding-top: 0!important;
+	padding-bottom: 0!important;
+	line-height: 50px!important;
+}
+
+/**********************/
+/* Notifications Menu */
+/**********************/
+
+nav.navbar-default ul#notifications-menu.dropdown-menu
+{
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+ul#notifications-menu span
+{
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;	
+	display: block;
+	margin: 0;
+}
+
+/*****************/
+/* Mobile Navbar */
+/*****************/
+
+.navbar-toggle
+{
+	border: none!important;
+	background: none!important;
+	color: white!important;
+	margin: 0!important;
+	height: 50px;
+}
+
+@media (min-width: 768px)
+{
+	nav #mobile-dropdown
+	{
+		display: none!important;
+	}
+}
+
+nav.navbar-default #mobile-dropdown .navbar-nav
+{
+	margin: 0;
+}
+
+nav.navbar-default #mobile-dropdown
+{
+	width: 100%;
+	position: fixed;
+	display: none;
+}
+
+/****************************************/
+/* People Search jQuery UI Autocomplete */
+/****************************************/
+
+ul.ui-autocomplete
+{
+	z-index: 2000;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.ui-autocomplete li
+{
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+li.ui-state-focus
+{
+	background: none!important;
+}
+
+.ui-autocomplete-loading
+{
+	background: white url("//ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/smoothness/images/ui-anim_basic_16x16.gif") right center no-repeat;
+}
+
+/******************************************************************************/
+/* Notification for new users that they should start their first conversation */
+/******************************************************************************/
+
+div#user-profile .popover
+{
+	display: block;
+	margin: 150px -200px;
+}
+
+/*********************/
+/* Full profile page */
+/*********************/
+
+#full-profile #user-profile
+{
+	overflow-y: auto;
+}
+
+/****************/
+/* About a User */
+/****************/
+
+/* URL is provided */
+
+.full-profile a span
+{
+	/* Cover Image */
+	display: block;
+	padding-bottom: 300px;
+	background-position: center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 991px) {
+	.full-profile a span
+	{
+		padding-bottom: 150px!important;
+	}
+}
+
+/* URL is provided when reading a conversation */
+
+div.sidebar-profile-offcanvas #profile-container div.col-md-5,
+div.sidebar-profile-offcanvas #profile-container div.col-md-7,
+div#full-profile #profile-container div.col-md-5,
+div#full-profile #profile-container div.col-md-7
+{
+	width: 100%!important;
+}
+
+div.sidebar-profile-offcanvas #profile-container div.col-md-5 .full-profile a span
+{
+	padding-bottom: 200px!important;
+}
+
+.full-profile
+{
+	padding: 0;
+}
+
+#profile-container div.panel-heading
+{
+	white-space: nowrap;
+	overflow-x: hidden;
+	text-overflow: ellipsis;	
+}
+
+#profile-fragment
+{
+	overflow-y: auto;
+	word-break: break-word;
+}
+
+#profile-fragment a.btn
+{
+	white-space: normal;
+}
+
+/******************************/
+/* Meet / Skip / Mute Buttons */
+/******************************/
+
+/* Fixed width on high resolution desktops */
+@media (min-width: 1200px)
+{
+	/* We don't want this to be calculated in the height of the profile */
+	div#user-tools.col-lg-3
+	{
+		height: 0;
+	}
+}
+
+@media (max-width: 1199px)
+{
+	div#user-tools.col-lg-3
+	{
+		right: 0;
+		bottom: 0;
+		white-space: nowrap;
+		background-color: transparent;
+		width: 100%;
+		padding: 0;
+		/* position: fixed; */
+		-webkit-overflow-scrolling: touch;
+	}
+	
+	div#user-tools.col-lg-3 > div
+	{
+		display: table;
+		width: 100%;
+		table-layout: fixed;
+		border-collapse: separate;
+	}
+	
+	div#user-tools.col-lg-3 div.copyright
+	{
+		display: none;
+	}
+	
+	div#user-tools.col-lg-3 .btn-block
+	{
+		display: table-cell!important;
+		float: none!important;
+		width: 33.33333333%!important;
+		margin-bottom: 0!important;
+		margin: 0!important;
+	}
+}
+
+/****************************/
+/* Search Conversation List */
+/****************************/
+
+#conversation-list.search-conversations .list-group-item:hover,
+#member-list .list-group-item:hover
+{
+	position: relative;
+}
+
+#conversation-list.search-conversations span.view-profile,
+#member-list span.view-profile
+{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	display: none;
+}
+
+#conversation-list.search-conversations .list-group-item:hover span.view-profile,
+#member-list .list-group-item:hover span.view-profile
+{
+	display: block;
+}
+
+/*********************/
+/* Conversation List */
+/*********************/
+
+#conversation-log, #conversation-list, #member-list
+{
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+#conversation-list div.list-group,
+#member-list div.list-group
+{
+	margin-bottom: 0;
+}
+
+#conversation-list .list-group-item,
+#member-list .list-group-item
+{
+	border-left: none!important;
+	border-right: none!important;	
+}
+
+#conversation-list a.list-group-item,
+#member-list a.list-group-item
+{
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	border-color: transparent;
+}
+
+#conversation-list.all-conversations,
+#conversation-list.search-conversations,
+#member-list
+{
+	overflow: inherit;
+}
+
+/***************************************/
+/* Archive and Unarchive Conversations */
+/***************************************/
+
+#conversation-list span.archive,
+#conversation-list span.unarchive
+{
+	float: right;
+	display: none;
+	margin: 2px 2px 0 5px!important;
+	position: relative;
+}
+
+#conversation-list span.archive:hover
+{
+	color: #a94442; /* .text-danger */
+}
+
+#conversation-list span.unarchive
+{
+	color: #337ab7; /* .text-primary */
+}
+
+#conversation-list .active span.archive:hover
+{
+	color: #f2dede; /* .bg-danger */
+}
+
+#conversation-list .list-group-item:hover span.archive,
+#conversation-list .list-group-item:hover span.unarchive
+{
+	display: inline!important;
+}
+
+/***************/
+/* User avatar */
+/***************/
+
+#conversation-list img.img-circle,
+#member-list img.img-circle,
+#conversation-log img.img-circle,
+nav.navbar-default a img.img-circle
+{
+	border-radius: 50%!important;
+	width: 32px!important;
+	height: 32px!important;
+	padding: 2px!important;
+}
+
+#conversation-list.search-conversations img.img-circle
+{
+	width: 64px!important;
+	height: 64px!important;
+	padding: 2px!important;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/***********************************/
+/* Active Conversations and Groups */
+/***********************************/
+
+#conversation-list,
+#member-list
+{
+	padding: 0;
+}
+
+#conversation-list *,
+#member-list *
+{
+	vertical-align: middle!important;
+}
+
+/*****************************/
+/* New Messages Notification */
+/*****************************/
+
+#conversation-list span.badge
+{
+	margin: 7px 2px 0 5px!important;
+}
+
+/**********************/
+/* Off-Canvas Profile */
+/**********************/
+
+.sidebar-profile-offcanvas
+{
+	padding-left: 0!important;
+	padding-right: 0!important;
+}
+
+@media screen and (max-width: 767px) {
+	.row-offcanvas {
+		position: relative;
+		-webkit-transition: all .25s ease-out;
+		-o-transition: all .25s ease-out;
+		-moz-transition: all .25s ease-out;
+		transition: all .25s ease-out;
+	}
+	
+	.row-offcanvas-right {
+		right: 0;
+	}
+	
+	.row-offcanvas-left {
+		left: 0;
+	}
+	
+	.row-offcanvas-right
+	.sidebar-offcanvas {
+		right: -250px;
+	}
+	
+	.row-offcanvas-left
+	.sidebar-offcanvas {
+		left: -250px;
+	}
+	
+	.row-offcanvas-right.active {
+		right: 250px;
+	}
+	
+	.row-offcanvas-left.active {
+		left: 250px;
+	}
+
+	.sidebar-offcanvas {
+		position: absolute;
+		top: 0;
+		width: 250px;
+	}
+	
+	/****************/
+	/* Mobile Style */
+	/****************/
+	
+	.tooltip {
+		display: none!important;
+	}
+}
+
+/*******************/
+/* Markdown Editor */
+/*******************/
+
+.md-editor > .md-header button
+{
+	margin: 0px 3px 5px 0px;
+	border-radius: 6px!important;
+}
+
+.md-editor > textarea
+{
+	background: #eee;
+}
+
+.md-editor > textarea:focus
+{
+	background: #fff;
+}
+
+/*****************************/
+/* Markdown Editor on Mobile */
+/*****************************/
+
+@media (max-width: 767px)
+{
+	.md-editor > .md-header
+	{
+		display: none;
+	}
+	
+	.md-editor > textarea
+	{
+		height: 45px;
+	}
+	
+	#send-message button[type=submit]
+	{
+		position: fixed;
+		bottom: 15px;
+	}
+}
+
+#send-message
+{
+	margin-top: 20px;
+}
+
+/*****************/
+/* User name bar */
+/*****************/
+
+@media (max-width: 767px)
+{
+	div.row-profile-offcanvas.active div.sidebar-profile-offcanvas.hidden-xs
+	{
+		display: block!important;
+	}
+
+	div.row-profile-offcanvas.active #conversation-log
+	{
+		display: none!important;
+	}
+}
+
+#conversation-list div.list-group:first-child div.list-group-item:first-child
+{
+	border-top-color: transparent;
+}
+
+#user-profile
+{
+	overflow-y: auto;
+	overflow-x: hidden;
+	border-left: none;
+	border-right: 1px solid #ddd;
+}
+
+/*******************/
+/* Parsed Messages */
+/*******************/
+
+/* Want first paragraph in the chat box to not have a top margin */
+div.panel *:first-child
+{
+	margin-top: 0;
+}
+
+/* Want last paragraph in the chat box to not have a bottom margin */
+div.panel *:last-child
+{
+	margin-bottom: 0;
+}
+
+/* Toolbar to send a message and see the user's profile */
+
+.bottom-tools
+{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	border-top: 1px solid #ddd;
+	-webkit-overflow-scrolling: touch;	
+}
+
+/* Can't send a message or see the user's profile if we are reading an archived conversation */
+
+.bottom-tools.invalid-user
+{
+	height: 1px;
+	visibility: hidden;
+}
+
+div#conversation-log
+{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	word-break: break-word;	
+}
+
+div#conversation-log div.panel *:first-child
+{
+	margin-top: 0;
+}
+
+div#conversation-log div.panel *:last-child
+{
+	margin-bottom: 0;
+}
+
+/***********************/
+/* Condensed on Mobile */
+/***********************/
+
+div#conversation-log div.panel
+{
+	margin-bottom: 20px;
+}
+
+div#conversation-log div.panel-body
+{
+	padding: 10px 15px;
+}
+
+div#conversation-log div.last-seen
+{
+	font-size: 12px; /* We set this to fixed so we can scroll down on page load appropriately */
+	height: 20px;
+	position: relative;
+}
+
+@media screen and (max-width: 767px) {
+	
+	div#conversation-log div.last-seen
+	{
+		font-size: 10px; /* We set this to fixed so we can scroll down on page load appropriately */
+		height: 15px;
+		top: -5px;
+	}
+	
+	div#conversation-log div.panel
+	{
+		margin-bottom: 10px!important;
+	}
+	
+	div#conversation-log div.panel-heading {
+		padding: 5px!important;
+	}
+	
+	div#conversation-log div.panel-body
+	{
+		padding: 5px!important;
+	}
+	
+	/* Member Profile */
+	
+	div#profile-container
+	{
+		padding: 0!important;
+	}
+	
+	div.sidebar-profile-offcanvas div#user-profile
+	{
+		border-left: none;
+	}
+}
+
+#conversation-log li.list-group-item
+{
+	border-bottom: none;
+}
+
+/**************/
+/* Off-Canvas */
+/**************/
+
+@media screen and (min-width: 768px) {
+	.row-profile-offcanvas {
+		position: relative;
+		-webkit-transition: all .25s ease-out;
+		-o-transition: all .25s ease-out;
+		-moz-transition: all .25s ease-out;
+		transition: all .25s ease-out;
+	}
+	
+	.row-profile-offcanvas-right {
+		right: 0;
+	}
+	
+	.row-profile-offcanvas-left {
+		left: 0;
+	}
+	
+	.row-profile-offcanvas-right
+	.sidebar-profile-offcanvas {
+		right: -600px;
+	}
+	
+	.row-profile-offcanvas-left
+	.sidebar-profile-offcanvas {
+		left: -600px;
+	}
+	
+	.row-profile-offcanvas-right.active {
+		right: 600px;
+	}
+	
+	.row-profile-offcanvas-left.active {
+		left: 600px;
+	}
+
+	.sidebar-profile-offcanvas {
+		position: absolute;
+		top: 0;
+		width: 600px;
+	}
+}
