@@ -70,7 +70,7 @@ class Messages extends CI_Controller
 		    $users = user_matches($response);
 		    
 		    $this->wb_template->assign('users', $users);
-		    $this->wb_template->assign('searched_users', $this->load->view('app/users/search_loop', $this->wb_template->get(), true), true);
+		    $this->wb_template->assign('searched_users', $this->load->view('app/users/loop', $this->wb_template->get(), true), true);
 		    
 		    $this->load->view('app/users/search', $this->wb_template->get());	    
 		}

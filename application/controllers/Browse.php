@@ -119,7 +119,7 @@ class Browse extends CI_Controller
 	}
 	
 	public function profile($offset = 0)
-	{		    	    
+	{		    	    	    
 		$offset = abs(intval($offset));
 		
 		// Restart at the beginning
@@ -133,7 +133,7 @@ class Browse extends CI_Controller
 		
 
 		// Load list of conversations into the template
-		build_conversations_sidebar();
+		build_conversations_sidebar();	
 		
 		// Determine which profile to show next
 		

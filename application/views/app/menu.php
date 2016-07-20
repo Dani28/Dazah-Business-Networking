@@ -66,7 +66,7 @@
 				
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle user-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-							<img src="<?= isset(who_am_i()->thumbnail) ? who_am_i()->thumbnail : '' ?>" alt="Profile Picture" class="img-circle img-thumbnail" width="32" height="32" title="My Profile">		
+							<img src="<?= isset(who_am_i()->thumbnail) ? who_am_i()->thumbnail : '//:0' ?>" alt="Profile Picture" class="img-circle img-thumbnail" width="32" height="32" title="My Profile">		
 							<strong><?= isset(who_am_i()->profile->first_name) ? who_am_i()->profile->first_name : 'Unknown Name' ?></strong>
 							<span class="caret"></span>
 						</a>

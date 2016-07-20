@@ -30,7 +30,7 @@
 			
 			<?php if ($message->author->id != who_am_i()->id): ?>
 				<div class="hidden-xs hidden-sm col-md-1">
-					<a href="<?= profile_url($users[$message->author->id]) ?>"><img src="<?= $users[$message->author->id]->thumbnail ?>" alt="Profile Picture" class="img-circle img-thumbnail" width="32" height="32"></a>
+					<a href="<?= profile_url($users[$message->author->id]) ?>"><img src="<?= isset($users[$message->author->id]->thumbnail) ? $users[$message->author->id]->thumbnail : '//:0' ?>" alt="Profile Picture" class="img-circle img-thumbnail" width="32" height="32"></a>
 				</div>
 			<?php endif; ?>
 			

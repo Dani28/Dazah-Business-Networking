@@ -705,15 +705,6 @@ div#user-profile .popover
 	margin: 150px -200px;
 }
 
-/*********************/
-/* Full profile page */
-/*********************/
-
-#full-profile #user-profile
-{
-	overflow-y: auto;
-}
-
 /****************/
 /* About a User */
 /****************/
@@ -823,6 +814,7 @@ div.sidebar-profile-offcanvas #profile-container div.col-md-5 .full-profile a sp
 		width: 33.33333333%!important;
 		margin-bottom: 0!important;
 		margin: 0!important;
+		border-radius: 0!important;
 	}
 }
 
@@ -1104,12 +1096,16 @@ nav.navbar-default a img.img-circle
 	border-top-color: transparent;
 }
 
-#user-profile
+#full-profile #user-profile
 {
-	overflow-y: auto;
-	overflow-x: hidden;
+	overflow: auto;
 	border-left: none;
 	border-right: 1px solid #ddd;
+}
+
+.sidebar-profile-offcanvas #user-profile
+{
+	overflow-y: auto;
 }
 
 /*******************/

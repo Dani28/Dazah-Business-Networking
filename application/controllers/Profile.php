@@ -52,7 +52,7 @@ class Profile extends CI_Controller
 		
 		// Our relationship with the user
 		$match = api_endpoint("users/$id/match");
-						
+				
 		$this->wb_template->assign('match', $match[0]);
 		
 		// Generate their profile

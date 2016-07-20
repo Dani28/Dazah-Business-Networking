@@ -318,7 +318,7 @@ function get_location($user)
 
 function is_online($user)
 {    
-    return $user->usage->online_status;
+    return isset($user->usage->online_status) ? $user->usage->online_status : false;
 }
 
 // Relative time based on the API timestamp
@@ -419,8 +419,8 @@ function fetch_notifications($conversation_ids, $user_ids)
                 'new_message_count' => $conversations[$i]->new_message_count > 0 ? $conversations[$i]->new_message_count : ''
             ),
             'user' => array(
-                'online_status' => $users[$i]->usage->online_status ? true : false,
-                'last_activity_timestamp' => timestamp($users[$i]->usage->last_activity_timestamp)
+                'online_status' => (isset($users[$i]->usage->online_status) AND $users[$i]->usage->online_status) ? true : false,
+                'last_activity_timestamp' => isset($users[$i]->usage->last_activity_timestamp) ? timestamp($users[$i]->usage->last_activity_timestamp) : 'Unknown'
             )
         );
     }
@@ -459,15 +459,16 @@ function build_conversations_sidebar()
         'include_archived' => false,
         'offset' => 0,
         'limit' => 100
-    );
+    );   
 
     // Fetch active conversations
     $conversations = api_endpoint('conversations/report', $properties);
-    
-    $CI->wb_template->assign('conversations', $conversations);
         
-    $sidebar = $CI->load->view('app/sidebar', $CI->wb_template->get(), true);
-    $CI->wb_template->assign('sidebar', $sidebar, true);
+    $CI->wb_template->assign('conversations', $conversations);   
+    
+    $sidebar = $CI->load->view('app/sidebar', $CI->wb_template->get(), true);   
+    
+    $CI->wb_template->assign('sidebar', $sidebar, true);    
 }
 
 function generate_page_nav($offset = 0, $per_page = 50, $url = null)

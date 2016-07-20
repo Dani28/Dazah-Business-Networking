@@ -21,12 +21,12 @@
     		</div>
         		
             <!-- Avatar -->	
-            <a href="<?= profile_url($user) ?>"><img src="<?= $user->picture ?>" alt="Profile Picture" class="img-circle img-thumbnail has-thumbshot"></a>				
+            <a href="<?= profile_url($user) ?>"><img src="<?= isset($user->picture) ? $user->picture : '//:0' ?>" alt="Profile Picture" class="img-circle img-thumbnail has-thumbshot"></a>				
     		
     	<?php else: ?>
         
             <!-- Avatar -->	
-            <a href="<?= profile_url($user) ?>"><img src="<?= $user->picture ?>" alt="Profile Picture" class="img-circle img-thumbnail"></a>			
+            <a href="<?= profile_url($user) ?>"><img src="<?= isset($user->picture) ? $user->picture : '//:0' ?>" alt="Profile Picture" class="img-circle img-thumbnail"></a>			
         	
     	<?php endif; ?>
 
@@ -36,7 +36,7 @@
 	
 		<h1>
 			<span>
-				<span class="status<?= is_online($user) ? ' online' : '' ?>" data-toggle="tooltip" data-placement="top" title="Active <?= timestamp($user->usage->last_activity_timestamp) ?>"><span class="fa fa-user" aria-hidden="true"></span></span>
+				<span class="status<?= is_online($user) ? ' online' : '' ?>" data-toggle="tooltip" data-placement="top" title="Active <?= isset($user->usage->last_activity_timestamp) ? timestamp($user->usage->last_activity_timestamp) : 'Unknown' ?>"><span class="fa fa-user" aria-hidden="true"></span></span>
 				<?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?>
 			</span>
 			<?= isset($user->profile->last_name) ? $user->profile->last_name : 'Name' ?>
