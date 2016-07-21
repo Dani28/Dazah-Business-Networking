@@ -7,6 +7,8 @@ From dating sites to job boards, all Dazapps have one thing in common:
 they're designed to match you with the people you otherwise wouldn't have found and yet are perfectly targeted to have synergy with,
 and they all work seamlessly through a single sign-in with your Dazah profile.
 
+**A real-world demo of this application can be reached at http://app.dazah.com**
+
 This application, built on top of the robust Dazah API, leverages the Dazah matching algorithm to find your top 100 best matches, sorted by relevancy.
 Browse the elevator pitches of your matches and determine in seconds whether there is potential synergy or not.
 Each time you choose to meet or mute someone, a new match is introduced.
