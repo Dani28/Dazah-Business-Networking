@@ -61,7 +61,7 @@ function base_url(path)
 function resize_conversation_log()
 {
 	var user_profile = $('#profile-fragment');	
-	var conversation_list = $('#conversation-list:not(.all-conversations)');
+	var conversation_list = $('#conversation-list:not(.all-conversations,.search-conversations)');
 	if (conversation_list.length && user_profile.length)
 	{
 		var container_height = $(window).height() - $('nav').outerHeight();

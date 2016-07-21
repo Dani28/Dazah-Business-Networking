@@ -19,6 +19,7 @@ function api_endpoint($endpoint, $properties = array(), $page_nav = array())
         curl_setopt($CURL_HANDLER, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($CURL_HANDLER, CURLOPT_TIMEOUT, 20);
         curl_setopt($CURL_HANDLER, CURLOPT_ENCODING, '');
+        curl_setopt($CURL_HANDLER, CURLOPT_HEADER, false);
     }
     else
     {
@@ -34,13 +35,15 @@ function api_endpoint($endpoint, $properties = array(), $page_nav = array())
     }
     else
     {
-        curl_setopt($CURL_HANDLER, CURLOPT_POST, false);        
+        curl_setopt($CURL_HANDLER, CURLOPT_HTTPGET, true);
     }
     
     curl_setopt($CURL_HANDLER, CURLOPT_POSTFIELDS, $properties);
 
     // Execute the cURL request
     $response = curl_exec($CURL_HANDLER);
+    
+    // var_dump(curl_getinfo(($CURL_HANDLER)));
                 
     // Determine if the response told us the token was invalid
     if (detect_expired_token($response) !== false)
@@ -49,7 +52,7 @@ function api_endpoint($endpoint, $properties = array(), $page_nav = array())
         //  Recursion!
         return api_endpoint($endpoint, $properties, $page_nav);
     }
-     
+         
     return process_response($response, $page_nav);
 }
 
@@ -319,6 +322,27 @@ function get_location($user)
 function is_online($user)
 {    
     return isset($user->usage->online_status) ? $user->usage->online_status : false;
+}
+
+function payment_link($user)
+{
+    // Retrieve the URL
+    $url = $user->meet->payment->paypal->url;
+    
+    // Break it down into components
+    $components = parse_url($url);
+    
+    // Split the query string
+    parse_str(htmlspecialchars_decode($components['query']), $query_data);
+    
+    // Overwrite these values
+    $query_data['return'] = site_url('payments/process/' . encrypt_id($user->id));
+    $query_data['cancel_return'] = site_url('profile/view/' . encrypt_id($user->id));
+    
+    // Replace the query string
+    $components['query'] = http_build_query($query_data);
+        
+    return $components['scheme'] . '://' . $components['host'] . $components['path'] . '?' . $components['query'];
 }
 
 // Relative time based on the API timestamp

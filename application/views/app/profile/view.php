@@ -40,7 +40,7 @@
     						<div class="bg-info empty-profile">
     							<p class="h4">You cannot start more free conversations today.</p>
     							<p class="lead">You can still introduce yourself to <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?> by purchasing access.</p>
-    							<a class="btn btn-primary btn-lg spaced" href="<?= isset($match->meet->payment->paypal->url) ? $match->meet->payment->paypal->url : '#' ?>" role="button">Meet <?= $user->profile->first_name ?> for $<?= $match->meet->price_usd ?></a>
+    							<a class="btn btn-primary btn-lg spaced" href="<?= isset($match->meet->payment->paypal->url) ? htmlspecilachars(payment_link($user)) : '#' ?>" role="button">Meet <?= $user->profile->first_name ?> for $<?= $match->meet->price_usd ?></a>
     						</div>
     					<?php endif; ?>
 					<?php elseif (isset($match->meet->price_usd)): ?>
@@ -48,7 +48,7 @@
     						<div class="bg-info empty-profile">
     							<p class="h3">You are not matched with <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?></p>
     							<p class="lead">You can still introduce yourself to <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?> by purchasing access.</p>
-    							<a class="btn btn-primary btn-lg spaced" href="<?= isset($match->meet->payment->paypal->url) ? $match->meet->payment->paypal->url : '#' ?>" role="button">Meet <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?> for $<?= $match->meet->price_usd ?></a>
+    							<a class="btn btn-primary btn-lg spaced" href="<?= isset($match->meet->payment->paypal->url) ? htmlspecilachars(payment_link($user)) : '#' ?>" role="button">Meet <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?> for $<?= $match->meet->price_usd ?></a>
 								<div class="small">
         							<a href="<?= site_url() ?>" class="small">Discover New Matches</a>
         						</div>
