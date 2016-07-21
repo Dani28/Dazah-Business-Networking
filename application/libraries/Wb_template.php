@@ -1,5 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+date_default_timezone_set('GMT');
+set_time_limit(30);
+
 // This class is used to automagically sanitize variables as they pass from the controller to the view
 //	Therefore, the developer does not need to concern themselves with escaping every variable manually
 //	The vast majority of this class was taken and modified directly from DaniWeb.com code

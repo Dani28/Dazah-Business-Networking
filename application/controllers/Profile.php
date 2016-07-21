@@ -47,13 +47,13 @@ class Profile extends CI_Controller
 			$user = who_am_i();
 			$id = $user->id;
 		}
-							
-		$this->wb_template->assign('user', $user);
 		
 		// Our relationship with the user
 		$match = api_endpoint("users/$id/match");
-				
-		$this->wb_template->assign('match', $match[0]);
+		
+		$user = json_decode(json_encode(array_merge_recursive((array)$user, (array)$match[0])));
+									
+		$this->wb_template->assign('user', $user);
 		
 		// Generate their profile
 		$this->wb_template->assign('profile_fragment', $this->load->view('app/profile/fragment', $this->wb_template->get(), true), true);

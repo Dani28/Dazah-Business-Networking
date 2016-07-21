@@ -1,8 +1,5 @@
 <?php
 
-date_default_timezone_set('GMT');
-set_time_limit(30);
-
 // This function will process all of our API endpoints
 function api_endpoint($endpoint, $properties = array(), $page_nav = array())
 {
