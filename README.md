@@ -51,6 +51,6 @@ You will automatically receive a commission, paid out weekly, each time users of
  
 ## To Install:
 
-1. Upload all files to your server
+1. Upload all files to the document root of a PHP-capable web server (nginx, apache, etc.)
 2. Modify line 26 of `/application/config/config.php` and specify your website's URL
 3. Modify lines 15 and 16 of `/application/config/dazah.php` with your Dazapp API credentials
