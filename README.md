@@ -7,7 +7,7 @@ From dating sites to job boards, all Dazapps have one thing in common:
 they're designed to match you with the people you otherwise wouldn't have found and yet are perfectly targeted to have synergy with,
 and they all work seamlessly through a single sign-in with your Dazah profile.
 
-This application, build on top of the robust Dazah API, leverages the Dazah matching algorithm to find your top 100 best matches, sorted by relevancy.
+This application, built on top of the robust Dazah API, leverages the Dazah matching algorithm to find your top 100 best matches, sorted by relevancy.
 Browse the elevator pitches of your matches and determine in seconds whether there is potential synergy or not.
 Each time you choose to meet or mute someone, a new match is introduced.
 Existing social networks are designed to help you stay in touch with people you already know. We're different.
@@ -17,7 +17,7 @@ or take the conversation offline or into your preferred CRM tool.
 This application only taps into a few components of the Dazah API.
 It can be used out-of-the-box, integrated with your exisiting business model, or you can add additional functionality from the Dazah API.
 
-** Complete Dazah API documentation is available at: https://www.dazah.com/developers **
+**Check out https://www.dazah.com/developers for complete API documentation**
 
 ### Instantly generate revenue.
 
