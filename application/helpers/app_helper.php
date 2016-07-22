@@ -49,7 +49,7 @@ function api_endpoint($endpoint, $properties = array(), $page_nav = array())
         //  Recursion!
         return api_endpoint($endpoint, $properties, $page_nav);
     }
-         
+    
     return process_response($response, $page_nav);
 }
 
@@ -459,6 +459,8 @@ function last_seen($conversation_id)
 
     // Call the API endpoint
     $messages = api_endpoint("conversations/$conversation_id/poll", $properties);
+    
+    $last_seen = array();
         
     foreach ($messages AS $message)
     {

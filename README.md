@@ -3,7 +3,7 @@
 Dazah is a business-oriented social messaging platform designed to power communities.
 Members of Dazah-powered communities enjoy an ability to discover, connect and message each other through a sophisticated matching algorithm.
 
-From dating sites to job boards, all Dazapps have one thing in common:
+From networking groups to job boards, all Dazapps have one thing in common:
 they're designed to match you with the people you otherwise wouldn't have found and yet are perfectly targeted to have synergy with,
 and they all work seamlessly through a single sign-in with your Dazah profile.
 

@@ -21,11 +21,8 @@
 </div>
 
 <script type="text/javascript">
-$.post('<?= site_url('app/payments/js_process') ?>', {id: <?= $user_id ?>}, function(data) {
-	if (data.url)
-	{
-		$(location).attr('href', data.url);
-	}
+$(function() {
+	setTimeout(function() { check_for_payment(<?= $user_id ?>); }, 5000);
 });
 </script>
 		

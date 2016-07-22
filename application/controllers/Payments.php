@@ -13,19 +13,19 @@ class Payments extends CI_Controller
         $this->load->view('app/payments/process', $this->wb_template->get());
     }
     
-    public function js_process()
+    public function js_check_payment()
     {
         if ($this->input->is_ajax_request())
         {
             // Retrieve the User ID
-            $user_id = $this->input->post('id');
+            $user_id = $this->input->post('user_id');
                         
             // Starting time
             $time = time();
             
-            // Keep looping until it's free to meet them or 5 minutes are up
-            while (time() < $time + 300)
-            {       
+            // Keep looping until it's free to meet them or 15 seconds are up
+            while (time() - $time <= 15)
+            {
                 // Determine our match relationship
                 $match = api_endpoint("users/$user_id/match")[0];
                     
@@ -48,9 +48,9 @@ class Payments extends CI_Controller
                     // Break out of the loop
                     break;                    
                 }
-                                
-                // Wait a second before trying again
-                sleep(1);
+                
+                // Wait 5 seconds before trying again
+                sleep(5);
             }            
         }
     }

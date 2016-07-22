@@ -53,6 +53,10 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
+
+    date_default_timezone_set('GMT');
+    set_time_limit(30);
+
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*

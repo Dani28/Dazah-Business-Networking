@@ -58,6 +58,25 @@ function base_url(path)
 	return site_url.concat('/' + path);
 }
 
+// Check for payment
+function check_for_payment(user_id)
+{
+	$.ajax({
+		type: 'POST',
+		url: base_url('payments/js_check_payment'),
+		data: { user_id: user_id },
+		success: function(data) {
+			if (data.url)
+			{
+				$(location).attr('href', data.url);
+			}
+		},
+		complete: function(data) {
+			next_check = window.setTimeout(check_for_payment, 1000);
+		}
+	});
+}
+
 function resize_conversation_log()
 {
 	var user_profile = $('#profile-fragment');	
