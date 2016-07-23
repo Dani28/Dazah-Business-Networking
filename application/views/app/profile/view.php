@@ -17,20 +17,20 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<?= $profile_fragment ?>
-										
-					<?php if (isset($user->conversation->id) OR $user->relationship->muted OR $user->relationship->skipped OR $user->match->algorithmic_match): ?>
+					
+					<?php if (isset($user->conversation->id) OR (isset($user->relationship->muted) AND $user->relationship->muted) OR (isset($user->relationship->skipped) AND $user->relationship->skipped) OR (isset($user->match->algorithmic_match) AND $user->match->algorithmic_match)): ?>
     					<?php if (isset($user->conversation->id)): ?>
     						<p>
     							<a class="btn btn-primary btn-block btn-lg" href="<?= conversation_url($user->conversation->id) ?>" role="button">Message</a>
     							<em>You're participating in a conversation with <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?></em>
-    						</p>					
+    						</p>			
     					<?php elseif (isset($user->meet->price_usd) AND $user->meet->price_usd == 0): ?>
     						<?php if (isset($user->relationship->skipped) AND $user->relationship->skipped): ?>
         						<p>
         							<a id="meet-profile-user" data-id="<?= $user->id ?>" class="btn btn-primary btn-block btn-lg" href="#" role="button">Meet</a>
         							<em>You've previously skipped over <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?></em>
         						</p>
-    						<?php elseif (isset($user->algorithmic_match) AND $user->match->algorithmic_match): ?>
+    						<?php elseif (isset($user->match->algorithmic_match) AND $user->match->algorithmic_match): ?>
         						<p>
         							<a id="meet-profile-user" data-id="<?= $user->id ?>" class="btn btn-primary btn-block btn-lg" href="#" role="button">Meet</a>
         							<em>You were recently matched with <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?></em>

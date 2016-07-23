@@ -47,21 +47,30 @@ class Profile extends CI_Controller
 			$user = who_am_i();
 			$id = $user->id;
 		}
-		
+				
 		// Our relationship with the user
 		$match = api_endpoint("users/$id/match");
 		
-		$user = json_decode(json_encode(array_merge_recursive((array)$user, (array)$match[0])));
-									
-		$this->wb_template->assign('user', $user);
-		
-		// Generate their profile
-		$this->wb_template->assign('profile_fragment', $this->load->view('app/profile/fragment', $this->wb_template->get(), true), true);
-				
-		build_conversations_sidebar();
-		
-		// Display their profile
-		$this->load->view('app/profile/view', $this->wb_template->get());
+		// Make sure the user exists
+		if (isset($match[0]))
+		{    				
+    		$user = json_decode(json_encode(array_merge_recursive((array)$user, (array)$match[0])));
+    									
+    		$this->wb_template->assign('user', $user);
+    		
+    		// Generate their profile
+    		$this->wb_template->assign('profile_fragment', $this->load->view('app/profile/fragment', $this->wb_template->get(), true), true);
+    				
+    		build_conversations_sidebar();
+    		
+    		// Display their profile
+    		$this->load->view('app/profile/view', $this->wb_template->get());
+		}
+		else 
+		{
+		    // User doesn't exist
+		    show_404();
+		}
 	}
 	
 }

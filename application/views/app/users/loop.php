@@ -17,7 +17,7 @@
 			<?php if (isset($user->relationship->existing_bubbled_conversation) AND $user->relationship->existing_bubbled_conversation): ?>
 				<span class="fa fa-comment" aria-hidden="true"></span>
 			<?php elseif (isset($user->meet->price_usd) AND $user->meet->price_usd == 0): ?>
-				<span class="btn btn-primary btn-xs">Free to Meet</span>
+				<span class="btn btn-primary btn-xs">Meet</span>
 			<?php elseif (isset($user->meet->price_usd) AND $user->meet->price_usd > 0): ?>
 				<span class="btn btn-primary btn-xs">$<?= $user->meet->price_usd ?> to Meet</span>	
 			<?php else: ?>
