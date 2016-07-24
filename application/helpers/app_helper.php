@@ -23,13 +23,7 @@ function batch_api_endpoint($endpoints)
         curl_setopt($CURL_HANDLER, CURLOPT_ENCODING, '');
         curl_setopt($CURL_HANDLER, CURLOPT_HEADER, false);
         curl_setopt($CURL_HANDLER, CURLOPT_TIMEOUT, 20);
-        curl_setopt($CURL_HANDLER, CURLOPT_SSL_VERIFYPEER, false);        
-        curl_setopt($CURL_HANDLER, CURLOPT_HTTPHEADER, array(
-            'Connection' => 'keep-alive',
-            'Cache-Control' => 'no-cache',
-            'Content-Type' => 'application/json',
-            'Content-Length' => strlen($payload)
-        ));
+        curl_setopt($CURL_HANDLER, CURLOPT_SSL_VERIFYPEER, false);
     }
     else
     {
@@ -40,6 +34,13 @@ function batch_api_endpoint($endpoints)
     // Set for just this request        
     curl_setopt($CURL_HANDLER, CURLOPT_POST, true);
     curl_setopt($CURL_HANDLER, CURLOPT_POSTFIELDS, $payload);
+    
+    curl_setopt($CURL_HANDLER, CURLOPT_HTTPHEADER, array(
+        'Connection: keep-alive',
+        'Cache-Control: no-cache',
+        'Content-Type: application/json',
+        'Content-Length: ' . strlen($payload),
+    ));
 
     // Execute the cURL request
     $batch_response = curl_exec($CURL_HANDLER);  
@@ -105,8 +106,8 @@ function api_endpoint($endpoint, $properties = array(), $post = false, $page_nav
     // Set for just this request
     
     curl_setopt($CURL_HANDLER, CURLOPT_HTTPHEADER, array(
-        'Connection' => 'keep-alive',
-        'Cache-Control' => 'no-cache',
+        'Connection: keep-alive',
+        'Cache-Control: no-cache',
     ));
 
     // Execute the cURL request
@@ -167,8 +168,8 @@ function retrieve_access_token()
         }
         
         curl_setopt($CURL_HANDLER, CURLOPT_HTTPHEADER, array(
-            'Connection' => 'keep-alive',
-            'Cache-Control' => 'no-cache',
+            'Connection: keep-alive',
+            'Cache-Control: no-cache',
         ));
         
         curl_setopt($CURL_HANDLER, CURLOPT_POST, true);
