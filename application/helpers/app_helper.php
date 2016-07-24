@@ -14,9 +14,12 @@ function api_endpoint($endpoint, $properties = array(), $page_nav = array())
         // This is the first time we are using cURL for this request, so initialize a new cURL handler
         $CURL_HANDLER = curl_init("https://www.dazah.com/api/$endpoint?access_token=$ACCESS_TOKEN");
         curl_setopt($CURL_HANDLER, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($CURL_HANDLER, CURLOPT_TIMEOUT, 20);
         curl_setopt($CURL_HANDLER, CURLOPT_ENCODING, '');
-        curl_setopt($CURL_HANDLER, CURLOPT_HEADER, false);
+        curl_setopt($CURL_HANDLER, CURLOPT_TIMEOUT, 20);
+        curl_setopt($CURL_HANDLER, CURLOPT_HTTPHEADER, array(
+            'Connection' => 'keep-alive',
+            'Cache-Control' => 'no-cache',
+        ));
     }
     else
     {
@@ -40,8 +43,6 @@ function api_endpoint($endpoint, $properties = array(), $page_nav = array())
     // Execute the cURL request
     $response = curl_exec($CURL_HANDLER);
     
-    // var_dump(curl_getinfo(($CURL_HANDLER)));
-                
     // Determine if the response told us the token was invalid
     if (detect_expired_token($response) !== false)
     {
@@ -56,7 +57,7 @@ function api_endpoint($endpoint, $properties = array(), $page_nav = array())
 // Go through the OAuth flow
 function retrieve_access_token()
 {
-    global $ACCESS_TOKEN;
+    global $ACCESS_TOKEN, $CURL_HANDLER;
 
     $CI =& get_instance();
         
@@ -81,11 +82,26 @@ function retrieve_access_token()
             redirect("https://www.dazah.com/oauth/auth?response_type=code&client_id={$oauth_credentials['client_id']}&scope={$oauth_credentials['scope']}&redirect_uri=".urlencode($current_url));
         }
         
-        $ch = curl_init('https://www.dazah.com/oauth/access_token');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_ENCODING, '');
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, array(
+        if ($CURL_HANDLER === null)
+        {
+            // This is the first time we are using cURL for this request, so initialize a new cURL handler
+            $CURL_HANDLER = curl_init('https://www.dazah.com/oauth/access_token');
+            curl_setopt($CURL_HANDLER, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($CURL_HANDLER, CURLOPT_ENCODING, '');
+            curl_setopt($CURL_HANDLER, CURLOPT_TIMEOUT, 20);            
+            curl_setopt($CURL_HANDLER, CURLOPT_HTTPHEADER, array(
+                'Connection' => 'keep-alive',
+                'Cache-Control' => 'no-cache',
+            ));
+        }
+        else
+        {
+            // Let's just change the URL for the existing cURL handler
+            curl_setopt($CURL_HANDLER, CURLOPT_URL, 'https://www.dazah.com/oauth/access_token');
+        }
+        
+        curl_setopt($CURL_HANDLER, CURLOPT_POST, true);
+        curl_setopt($CURL_HANDLER, CURLOPT_POSTFIELDS, array(
             'code' => $CI->input->get('code'),
             'redirect_uri' => $current_url,
             'client_id' => $oauth_credentials['client_id'],
@@ -93,10 +109,8 @@ function retrieve_access_token()
             'grant_type' => 'authorization_code',
         ));
          
-        $response = json_decode(curl_exec($ch));
-        
-        curl_close($ch);
-        
+        $response = json_decode(curl_exec($CURL_HANDLER));
+                
         // Access token granted
         if (isset($response->access_token))
         {
@@ -525,4 +539,9 @@ function generate_page_nav($offset = 0, $per_page = 50, $url = null)
     }
 
     return $page_nav;
+}
+
+function is_dani()
+{
+    return $_SERVER['REMOTE_ADDR'] == '184.74.210.50';
 }

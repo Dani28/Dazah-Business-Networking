@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Payments extends CI_Controller
-{
+{    
     public function process($id = 0)
     {
         $id = decrypt_id($id);
