@@ -1,7 +1,63 @@
 <?php
 
+// This function will process API endpoints simultaneously
+function batch_api_endpoint($endpoints)
+{
+    global $ACCESS_TOKEN, $CURL_HANDLER;
+    
+    $CI =& get_instance();
+    
+    // Encode the requested endpoints
+    $payload = json_encode(array(
+        'requests' => $endpoints,
+        'params' => array(
+            'access_token' => $ACCESS_TOKEN
+        )
+    ));
+
+    if ($CURL_HANDLER === null)
+    {
+        // This is the first time we are using cURL for this request, so initialize a new cURL handler
+        $CURL_HANDLER = curl_init('https://www.dazah.com/api');
+        curl_setopt($CURL_HANDLER, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($CURL_HANDLER, CURLOPT_ENCODING, '');
+        curl_setopt($CURL_HANDLER, CURLOPT_HEADER, false);
+        curl_setopt($CURL_HANDLER, CURLOPT_TIMEOUT, 20);
+        curl_setopt($CURL_HANDLER, CURLOPT_SSL_VERIFYPEER, false);        
+        curl_setopt($CURL_HANDLER, CURLOPT_HTTPHEADER, array(
+            'Connection' => 'keep-alive',
+            'Cache-Control' => 'no-cache',
+            'Content-Type' => 'application/json',
+            'Content-Length' => strlen($payload)
+        ));
+    }
+    else
+    {
+        // Let's just change the URL for the existing cURL handler
+        curl_setopt($CURL_HANDLER, CURLOPT_URL, "https://www.dazah.com/api");
+    }
+    
+    // Set for just this request        
+    curl_setopt($CURL_HANDLER, CURLOPT_POST, true);
+    curl_setopt($CURL_HANDLER, CURLOPT_POSTFIELDS, $payload);
+
+    // Execute the cURL request
+    $batch_response = curl_exec($CURL_HANDLER);  
+
+    // Determine if the response told us the token was invalid
+    if (detect_expired_token($batch_response) !== false)
+    {
+        // Token was expired, so we refreshed it and now we want to rerun this API endpoint
+        //  Recursion!
+        return batch_api_endpoint($endpoints);
+    }
+    
+    // Return for further processing since we're basically dealing with multiple requests here
+    return $batch_response;  
+}
+
 // This function will process all of our API endpoints
-function api_endpoint($endpoint, $properties = array(), $page_nav = array())
+function api_endpoint($endpoint, $properties = array(), $post = false, $page_nav = array())
 {
     // TODO: Instead of using global variables, everything OAuth related should really be in its own class
     
@@ -9,47 +65,59 @@ function api_endpoint($endpoint, $properties = array(), $page_nav = array())
     
     $CI =& get_instance();
     
+    $url = "https://www.dazah.com/api/$endpoint?access_token=$ACCESS_TOKEN";
+    
+    // If it's a GET request and there are parameters, add them to the URL string
+    if (!$post AND !empty($properties))
+    {
+        $url .= '&' . http_build_query($properties);
+    }
+    
     if ($CURL_HANDLER === null)
     {
-        // This is the first time we are using cURL for this request, so initialize a new cURL handler
-        $CURL_HANDLER = curl_init("https://www.dazah.com/api/$endpoint?access_token=$ACCESS_TOKEN");
+        // This is the first time we are using cURL for this page request, so initialize a new cURL handler
+        $CURL_HANDLER = curl_init($url);
         curl_setopt($CURL_HANDLER, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($CURL_HANDLER, CURLOPT_ENCODING, '');
+        curl_setopt($CURL_HANDLER, CURLOPT_HEADER, false);
         curl_setopt($CURL_HANDLER, CURLOPT_TIMEOUT, 20);
-        curl_setopt($CURL_HANDLER, CURLOPT_SSL_VERIFYPEER, false);        
-        curl_setopt($CURL_HANDLER, CURLOPT_HTTPHEADER, array(
-            'Connection' => 'keep-alive',
-            'Cache-Control' => 'no-cache',
-        ));
+        curl_setopt($CURL_HANDLER, CURLOPT_SSL_VERIFYPEER, false); 
     }
     else
     {
         // Let's just change the URL for the existing cURL handler
-        curl_setopt($CURL_HANDLER, CURLOPT_URL, "https://www.dazah.com/api/$endpoint?access_token=$ACCESS_TOKEN");
+        curl_setopt($CURL_HANDLER, CURLOPT_URL, $url);
+    }
+    
+    // If it's a post request, set it as such, otherwise GET
+    if ($post)
+    {
+        curl_setopt($CURL_HANDLER, CURLOPT_POST, true);
+        curl_setopt($CURL_HANDLER, CURLOPT_POSTFIELDS, $properties);
+    }
+    else
+    {
+        curl_setopt($CURL_HANDLER, CURLOPT_POST, false);
+        curl_setopt($CURL_HANDLER, CURLOPT_POSTFIELDS, array());
+        curl_setopt($CURL_HANDLER, CURLOPT_HTTPGET, true);
     }
     
     // Set for just this request
     
-    if (!empty($properties))
-    {
-        curl_setopt($CURL_HANDLER, CURLOPT_POST, true);        
-    }
-    else
-    {
-        curl_setopt($CURL_HANDLER, CURLOPT_HTTPGET, true);
-    }
-    
-    curl_setopt($CURL_HANDLER, CURLOPT_POSTFIELDS, $properties);
+    curl_setopt($CURL_HANDLER, CURLOPT_HTTPHEADER, array(
+        'Connection' => 'keep-alive',
+        'Cache-Control' => 'no-cache',
+    ));
 
     // Execute the cURL request
     $response = curl_exec($CURL_HANDLER);
-                
+
     // Determine if the response told us the token was invalid
     if (detect_expired_token($response) !== false)
     {
         // Token was expired, so we refreshed it and now we want to rerun this API endpoint
         //  Recursion!
-        return api_endpoint($endpoint, $properties, $page_nav);
+        return api_endpoint($endpoint, $properties, $post, $page_nav);
     }
     
     return process_response($response, $page_nav);
@@ -65,7 +133,7 @@ function retrieve_access_token()
     // First attempt to get/save the access token as a cookie instead of going through OAuth on every single page load
     
     $ACCESS_TOKEN = $CI->input->cookie('access_token');
-    
+        
     if ($ACCESS_TOKEN === null)
     {           
         $CI->config->load('dazah');
@@ -91,16 +159,17 @@ function retrieve_access_token()
             curl_setopt($CURL_HANDLER, CURLOPT_ENCODING, '');
             curl_setopt($CURL_HANDLER, CURLOPT_TIMEOUT, 20);     
             curl_setopt($CURL_HANDLER, CURLOPT_SSL_VERIFYPEER, false);            
-            curl_setopt($CURL_HANDLER, CURLOPT_HTTPHEADER, array(
-                'Connection' => 'keep-alive',
-                'Cache-Control' => 'no-cache',
-            ));
         }
         else
         {
             // Let's just change the URL for the existing cURL handler
             curl_setopt($CURL_HANDLER, CURLOPT_URL, 'https://www.dazah.com/oauth/access_token');
         }
+        
+        curl_setopt($CURL_HANDLER, CURLOPT_HTTPHEADER, array(
+            'Connection' => 'keep-alive',
+            'Cache-Control' => 'no-cache',
+        ));
         
         curl_setopt($CURL_HANDLER, CURLOPT_POST, true);
         curl_setopt($CURL_HANDLER, CURLOPT_POSTFIELDS, array(
@@ -148,17 +217,109 @@ function detect_expired_token($response)
     return false;
 }
 
+function page_request($request = array(), $include_sidebar = true, $page_nav = array())
+{
+    // Let's try to fetch the first page request needed
+    // We'll also retrieve ourselves and the sidebar that will appear on every page
+    // We'll be using a batch request
+    
+    global $WHO_AM_I;
+    
+    $CI =& get_instance();
+        
+    // Who we are
+    $endpoints = array(
+        array(
+            'url' => 'users/~',
+        )
+    );
+    
+    // Sidebar that appears on most pages of the site
+    if ($include_sidebar)
+    {
+        $endpoints[] = array(
+            'url' => 'conversations/report',
+            'params' => array(
+                'include_archived' => false,
+                'offset' => 0,
+                'limit' => 50
+            )
+        );
+    }
+    
+    // A third request for the page
+    if (!empty($request))
+    {
+        $endpoints[] = $request;
+    }
+    
+    // We put this into an array instead of PHP object so we can pop off the stack
+    $batch_response = json_decode(batch_api_endpoint($endpoints), true)['data'];
+    
+    // First endpoint is always going to be Who Am I, which we store as a global variable so we can access it whenever we need
+    $WHO_AM_I = process_response(json_encode(array_shift($batch_response)['response']));
+    
+    // Now that we know who we are, we can process the menu that leverages this
+    $CI->wb_template->assign('menu', $CI->load->view('app/menu', $CI->wb_template->get(), true), true);
+    
+    // Send endpoint is going to be the sidebar
+    if ($include_sidebar)
+    {
+        $conversations = process_response(json_encode(array_shift($batch_response)['response']));
+        
+        // Send it to the template
+        $CI->wb_template->assign('conversations', $conversations);    
+        $sidebar = $CI->load->view('app/sidebar', $CI->wb_template->get(), true);
+        $CI->wb_template->assign('sidebar', $sidebar, true);            
+    }
+    
+    if (!empty($request))
+    {
+        return process_response(json_encode(array_shift($batch_response)['response']), $page_nav);
+    }    
+}
+
+function build_menu()
+{
+    $CI =& get_instance();
+    
+    $CI->wb_template->assign('menu', $CI->load->view('app/menu', $CI->wb_template->get(), true), true);
+}
+
 function who_am_i()
 {
     global $WHO_AM_I;
     
+    $CI =& get_instance();
+        
     if ($WHO_AM_I === null)
     {
-        // First time we are requesting this, so let's fetch it from the API
+        // First time we are requesting this, so let's fetch it from the API        
         $WHO_AM_I = api_endpoint('users/~');
     }
     
     return $WHO_AM_I;
+}
+
+// Conversation list in sidebar
+function build_conversations_sidebar()
+{
+    $CI =& get_instance();
+
+    $properties = array(
+        'include_archived' => false,
+        'offset' => 0,
+        'limit' => 50
+    );
+
+    // Fetch active conversations
+    $conversations = api_endpoint('conversations/report', $properties);
+
+    $CI->wb_template->assign('conversations', $conversations);
+
+    $sidebar = $CI->load->view('app/sidebar', $CI->wb_template->get(), true);
+
+    $CI->wb_template->assign('sidebar', $sidebar, true);
 }
 
 // Show a friendly error message if the API, and otherwise just return the data portion of the response
@@ -167,7 +328,7 @@ function process_response($response, $page_nav = array())
     $CI =& get_instance();
 
     $response = json_decode($response);
-
+    
     if (isset($response->error))
     {
         if ($CI->input->is_ajax_request())
@@ -211,7 +372,7 @@ function process_response($response, $page_nav = array())
     }
     else if (isset($response->data))
     {
-        if (isset($response->pagination))
+        if (isset($response->pagination) AND !empty($page_nav))
         {            
             $CI->load->library('pagination');
             
@@ -487,27 +648,6 @@ function last_seen($conversation_id)
     }
     
     return $last_seen;
-}
-
-// Conversation list in sidebar
-function build_conversations_sidebar()
-{
-    $CI =& get_instance();
-            
-    $properties = array(
-        'include_archived' => false,
-        'offset' => 0,
-        'limit' => 100
-    );   
-
-    // Fetch active conversations
-    $conversations = api_endpoint('conversations/report', $properties);
-        
-    $CI->wb_template->assign('conversations', $conversations);   
-    
-    $sidebar = $CI->load->view('app/sidebar', $CI->wb_template->get(), true);   
-    
-    $CI->wb_template->assign('sidebar', $sidebar, true);    
 }
 
 function generate_page_nav($offset = 0, $per_page = 50, $url = null)

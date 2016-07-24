@@ -64,13 +64,15 @@ class Messages extends CI_Controller
 		    $page_nav = generate_page_nav($offset, 12, $url);
 		    
 		    // Retrieve users
-		    $response = api_endpoint('users/search', $properties, $page_nav);
+		    $response = api_endpoint('users/search', $properties, false, $page_nav);
 		    
 		    // Determine our relationship with them
 		    $users = user_matches($response);
 		    
 		    $this->wb_template->assign('users', $users);
 		    $this->wb_template->assign('searched_users', $this->load->view('app/users/loop', $this->wb_template->get(), true), true);
+		    
+		    build_menu();
 		    
 		    $this->load->view('app/users/search', $this->wb_template->get());	    
 		}
@@ -93,9 +95,11 @@ class Messages extends CI_Controller
 	    $page_nav = generate_page_nav($offset, 60, site_url('messages/report'));
 	    
 	    // Retrieve conversations
-	    $conversations = api_endpoint('conversations/report', $properties, $page_nav);
+	    $conversations = api_endpoint('conversations/report', $properties, false, $page_nav);
 	    	    
 	    $this->wb_template->assign('conversations', $conversations);
+	    
+	    build_menu();
 	    
 	    $this->load->view('app/messages/report', $this->wb_template->get());
 	}
@@ -103,14 +107,17 @@ class Messages extends CI_Controller
 	public function view($id)
 	{	
 	    $id = decrypt_id($id);
-
-	    $properties = array(
+	    
+	    $request = array(
+	        'url' => "conversations/$id/poll",
+	        'params' => array(
 	        'exclude_self' => false,
 	        'record_seen' => true,
 	        'time_limit' => 0
+        )
 	    );
 	    
-	    $messages = api_endpoint("conversations/$id/poll", $properties);
+	    $messages = page_request($request, true);
 	    	    
 	    if (!empty($messages))
 	    {
@@ -128,9 +135,7 @@ class Messages extends CI_Controller
 	        	        
 	        // Generate their profile
 	        $this->wb_template->assign('profile_fragment', $this->load->view('app/profile/fragment', $this->wb_template->get(), true), true);
-	        	    	    
-	        build_conversations_sidebar();	         
-	        
+	        	    	    	        
 	        $this->load->view('app/messages/view', $this->wb_template->get());
 	    }
 	    else
@@ -158,7 +163,7 @@ class Messages extends CI_Controller
     	    );
     	
     	    // Call the API endpoint
-    	    $messages = api_endpoint("conversations/$conversation_id/poll", $properties);
+    	    $messages = api_endpoint("conversations/$conversation_id/poll", $properties, true);
     	
     	    if (!empty($messages))
     	    {
@@ -214,7 +219,7 @@ class Messages extends CI_Controller
     
             // Submit the new message
             //  Be happy that the api_endpoint() function handles errors
-            $new_message = api_endpoint("conversations/$conversation_id/post", $properties);
+            $new_message = api_endpoint("conversations/$conversation_id/post", $properties, true);
             
             // Set the timestamp to now
             $new_message->{'timestamp'} = date('c', now());
@@ -246,7 +251,7 @@ class Messages extends CI_Controller
 			$conversation_id = $this->input->post('id');
 				
 		    // Archive it
-	        api_endpoint("conversations/$conversation_id/archive");
+	        api_endpoint("conversations/$conversation_id/archive", array(), true);
 		}
 	}
 

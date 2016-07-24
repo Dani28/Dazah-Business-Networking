@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Browse extends CI_Controller
-{	
+{    
     private function js_next_profile($offset)
     {
         // Restart at the beginning
@@ -41,7 +41,7 @@ class Browse extends CI_Controller
             // They are free to meet
             if (isset($match->meet->price_usd) AND $match->meet->price_usd == 0)
             {
-                $result = api_endpoint("users/$user_id/meet");
+                $result = api_endpoint("users/$user_id/meet", array(), true);
                 
                 if (isset($result->conversation->id))
                 {        
@@ -72,7 +72,7 @@ class Browse extends CI_Controller
 	            $offset = abs(intval($this->input->post('offset')));
 	            
 	            // Start a new conversation with the user passed in via POST request
-	            api_endpoint("users/$user_id/meet");
+	            api_endpoint("users/$user_id/meet", array(), true);
 	            
 	            // JSON object increases the page offset
 	            $this->js_next_profile($offset);
@@ -90,7 +90,7 @@ class Browse extends CI_Controller
 			$user_id = $this->input->post('id');
 			
 			// Block the user passed in via POST request
-			api_endpoint("users/$user_id/mute");
+			api_endpoint("users/$user_id/mute", array(), true);
 				
 			// JSON object increases the page offset
 			$this->js_next_profile($offset);
@@ -106,7 +106,7 @@ class Browse extends CI_Controller
 			$user_id = $this->input->post('id');
 			
 			// Skip the user passed in via POST request
-			api_endpoint("users/$user_id/skip");
+			api_endpoint("users/$user_id/skip", array(), true);
 				
 			// JSON object increases the page offset
 			$this->js_next_profile($offset);
@@ -131,18 +131,17 @@ class Browse extends CI_Controller
 		// We send the offset to the template
 		$this->wb_template->assign('offset', $offset);
 		
-
-		// Load list of conversations into the template
-		build_conversations_sidebar();	
-		
 		// Determine which profile to show next
+				
+		$request = array(
+		    'url' => 'users/matches',
+		    'params' => array(
+		        'limit' => 1,
+		        'offset' => $offset
+		    )
+		);
 		
-		$properties = array(
-		    'limit' => 1,
-		    'offset' => $offset
-		);		
-		
-		$user = api_endpoint('users/matches', $properties);	
+		$user = page_request($request, true);
 								
 		// The API endpoint is returning an array with only one user in it, since we have limit => 1
 		if (isset($user[0]->id))

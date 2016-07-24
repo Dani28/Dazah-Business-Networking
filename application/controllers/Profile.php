@@ -36,13 +36,22 @@ class Profile extends CI_Controller
 	    
 		if ($id > 0)
 		{
-		    $response = api_endpoint("users/$id");
+		    // Determine which profile to show next
 		    
+		    $request = array(
+		        'url' => "users/$id",
+		    );
+		    
+		    $response = page_request($request, true);
+		    		    
 		    // We just want to talk about the user object
 		    $user = $response[0];
 		}
 		else
 		{			
+		    // Let's build the top menu and sidebar
+		    $response = page_request(array(), true);
+		    
 		    // Let's talk about ourselves
 			$user = who_am_i();
 			$id = $user->id;
@@ -60,9 +69,7 @@ class Profile extends CI_Controller
     		
     		// Generate their profile
     		$this->wb_template->assign('profile_fragment', $this->load->view('app/profile/fragment', $this->wb_template->get(), true), true);
-    				
-    		build_conversations_sidebar();
-    		
+    				    		
     		// Display their profile
     		$this->load->view('app/profile/view', $this->wb_template->get());
 		}

@@ -101,13 +101,13 @@ class Wb_template {
 	public function __construct()
 	{		
 		$this->CI =& get_instance();
-						
+
 		// Retrieve access token so we will have access to who_am_i() from wherever we are
 		retrieve_access_token();
-					
+		
 		// Make sure that the shared header and footer are available from all templates
 		$this->output['header'] = $this->CI->load->view('app/header', $this->output, true);
 		$this->output['footer'] = $this->CI->load->view('app/footer', $this->output, true);
-		$this->output['menu'] = $this->CI->load->view('app/menu', $this->output, true);		
+		$this->output['menu'] = '';			
 	}
 }
