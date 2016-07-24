@@ -37,7 +37,7 @@ class Users extends CI_Controller
 		$page_nav = generate_page_nav($offset, 50, site_url("users/blocked/$order_by"));
 
 		$request = array(
-		    'url' => 'users/blocked',
+		    'url' => 'users/muted',
 		    'params' => array(
 		        'order_by' => $order_by,
 		        'offset' => $offset
