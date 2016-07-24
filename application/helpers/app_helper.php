@@ -16,6 +16,7 @@ function api_endpoint($endpoint, $properties = array(), $page_nav = array())
         curl_setopt($CURL_HANDLER, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($CURL_HANDLER, CURLOPT_ENCODING, '');
         curl_setopt($CURL_HANDLER, CURLOPT_TIMEOUT, 20);
+        curl_setopt($CURL_HANDLER, CURLOPT_SSL_VERIFYPEER, false);        
         curl_setopt($CURL_HANDLER, CURLOPT_HTTPHEADER, array(
             'Connection' => 'keep-alive',
             'Cache-Control' => 'no-cache',
@@ -42,7 +43,7 @@ function api_endpoint($endpoint, $properties = array(), $page_nav = array())
 
     // Execute the cURL request
     $response = curl_exec($CURL_HANDLER);
-    
+                
     // Determine if the response told us the token was invalid
     if (detect_expired_token($response) !== false)
     {
@@ -88,7 +89,8 @@ function retrieve_access_token()
             $CURL_HANDLER = curl_init('https://www.dazah.com/oauth/access_token');
             curl_setopt($CURL_HANDLER, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($CURL_HANDLER, CURLOPT_ENCODING, '');
-            curl_setopt($CURL_HANDLER, CURLOPT_TIMEOUT, 20);            
+            curl_setopt($CURL_HANDLER, CURLOPT_TIMEOUT, 20);     
+            curl_setopt($CURL_HANDLER, CURLOPT_SSL_VERIFYPEER, false);            
             curl_setopt($CURL_HANDLER, CURLOPT_HTTPHEADER, array(
                 'Connection' => 'keep-alive',
                 'Cache-Control' => 'no-cache',
