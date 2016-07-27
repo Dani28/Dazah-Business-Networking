@@ -277,7 +277,7 @@ function page_request($request = array(), $include_sidebar = true, $page_nav = a
     if (!empty($request))
     {
         return process_response(json_encode(array_shift($batch_response)['response']), $page_nav);
-    }    
+    }
 }
 
 function build_menu()
@@ -539,7 +539,7 @@ function user_matches($response)
     
     $users = array();
     $user_ids = array();
-    
+        
     foreach ($response AS $user)
     {
         $users[] = $user->user;

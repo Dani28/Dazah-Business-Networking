@@ -64,9 +64,9 @@ class Users extends CI_Controller
 		        'offset' => $offset
 		    )
 		);
-		
-		$response = page_request($request, false, $page_nav);
 				
+		$response = page_request($request, false, $page_nav);	
+		
 		// Determine our relationship with them
 		$users = user_matches($response);
 				
