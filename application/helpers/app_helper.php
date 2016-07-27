@@ -511,6 +511,7 @@ function payment_link($user)
     parse_str(htmlspecialchars_decode($components['query']), $query_data);
     
     // Overwrite these values
+    // Wait for the payment to be processed and then redirect them to the new conversation
     $query_data['return'] = site_url('payments/process/' . encrypt_id($user->id));
     $query_data['cancel_return'] = site_url('profile/view/' . encrypt_id($user->id));
     

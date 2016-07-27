@@ -149,10 +149,12 @@ class Browse extends CI_Controller
 		    // Determine our relationship with them
 		    $match = api_endpoint("users/{$user[0]->id}/match")[0];
 
-		    // They are free to meet
-		    if (isset($match->meet->price_usd) AND $match->meet->price_usd == 0)
+		    // Profiles are available (this used to be only if they were free, but now we allow payments)
+		    if (isset($match->meet->price_usd) AND $match->meet->price_usd >= 0)
 		    {	    
-    			$this->wb_template->assign('user', $user[0]);
+		        $user = json_decode(json_encode(array_merge_recursive((array)$user[0], (array)$match)));
+		        
+    			$this->wb_template->assign('user', $user);
     			
     			// Generate their profile
     			$this->wb_template->assign('profile_fragment', $this->load->view('app/profile/fragment', $this->wb_template->get(), true), true);

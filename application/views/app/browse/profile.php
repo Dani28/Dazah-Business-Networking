@@ -44,7 +44,11 @@
 
 				<div id="user-tools" data-id="<?= $user->id ?>" data-offset="<?= $offset ?>" class="col-lg-3">
 					<div>
-						<button id="meet" class="btn btn-primary btn-lg btn-block" type="button">Meet</button>
+						<?php if (isset($user->meet->price_usd) AND $user->meet->price_usd == 0): ?>
+							<button id="meet" class="btn btn-primary btn-lg btn-block" type="button">Meet</button>
+						<?php elseif (isset($user->meet->payment->paypal->url) AND $user->meet->price_usd > 0): ?>
+							<a href="<?= htmlspecialchars(payment_link($user)) ?>" class="btn btn-primary btn-lg btn-block" type="button">Meet for $<?= $user->meet->price_usd ?></a>
+						<?php endif; ?>
 						<button id="skip" class="btn btn-warning btn-lg btn-block" type="button">Skip</button>
 						<button id="block" class="btn btn-danger btn-lg btn-block" type="button">Mute</button>
 						
