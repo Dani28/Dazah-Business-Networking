@@ -11,7 +11,7 @@ class Messages extends CI_Controller
 		    );
 		    
 		    $autocomplete = api_endpoint('autocomplete/search', $properties);
-		    
+		    		    
 		    $results = array();
 
 		    foreach ($autocomplete AS $key => $value)
