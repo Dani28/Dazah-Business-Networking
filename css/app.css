@@ -474,6 +474,18 @@ div#meet-helper
 	margin-bottom: 10px;
 }
 
+#user-tools .btn-block.btn-wrapper
+{
+	margin: 0 0 10px 0!important;
+	padding: 0!important;
+	border: 0!important;
+}
+
+#user-tools .btn-block.btn-wrapper .btn-block.btn-lg
+{
+	margin-bottom: 0!important;
+}
+
 #conversation-list a.list-group-item,
 #member-list a.list-group-item
 {
