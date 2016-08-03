@@ -43,29 +43,26 @@
 				</div>
 
 				<div id="user-tools" data-id="<?= $user->id ?>" data-offset="<?= $offset ?>" class="col-lg-3">
-					<div>
+					<div class="meet-buttons">
 						<?php if (isset($user->meet->price_usd) AND $user->meet->price_usd == 0): ?>
 							<button id="meet" class="btn btn-primary btn-lg btn-block" type="button">Meet</button>
 						<?php elseif (isset($user->meet->payment->paypal->url) AND $user->meet->price_usd > 0): ?>
-							<button class="btn-wrapper btn btn-lg btn-block" type="button">
-								<a href="<?= htmlspecialchars(payment_link($user)) ?>" class="btn btn-primary btn-lg btn-block" type="button">Meet for $<?= $user->meet->price_usd ?></a>
-							</button>
+							<button id="meet" class="btn btn-primary btn-lg btn-block" type="button" data-payment="<?= htmlspecialchars(payment_link($user)) ?>">Meet for $<?= $user->meet->price_usd ?></button>
 						<?php endif; ?>
 						<button id="skip" class="btn btn-warning btn-lg btn-block" type="button">Skip</button>
 						<button id="block" class="btn btn-danger btn-lg btn-block" type="button">Mute</button>
-						
-						<div class="keyboard-shortcuts hidden-xs hidden-sm hidden-md">
-							<div><span class="fa fa-keyboard-o" aria-hidden="true"></span> Keyboard Shortcuts</div>
-							<ul class="small">
-								<li><kbd class="no-bg">&crarr;</kbd> Return/Enter to <strong>meet</strong></li>
-								<li><kbd class="no-bg">&rarr;</kbd> Right arrow to <strong>skip</strong></li>
-								<li><kbd>DEL</kbd> Delete to <strong>mute</strong></li>
-							</ul>
-						</div>
-						
-						<div id="browse-carbon" class="clearfix"></div>								
-						
 					</div>
+					
+					<div class="keyboard-shortcuts hidden-xs hidden-sm hidden-md">
+						<div><span class="fa fa-keyboard-o" aria-hidden="true"></span> Keyboard Shortcuts</div>
+						<ul class="small">
+							<li><kbd class="no-bg">&crarr;</kbd> Return/Enter to <strong>meet</strong></li>
+							<li><kbd class="no-bg">&rarr;</kbd> Right arrow to <strong>skip</strong></li>
+							<li><kbd>DEL</kbd> Delete to <strong>mute</strong></li>
+						</ul>
+					</div>
+					
+					<div id="browse-carbon" class="clearfix"></div>
 					
 				</div>
 			</div>		

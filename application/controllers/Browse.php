@@ -41,13 +41,14 @@ class Browse extends CI_Controller
             // They are free to meet
             if (isset($match->meet->price_usd) AND $match->meet->price_usd == 0)
             {
+                // Start a new conversation with the user passed in via POST request                
                 $result = api_endpoint("users/$user_id/meet", array(), true);
                 
                 if (isset($result->conversation->id))
                 {        
-                    // Start a new conversation with the user passed in via POST request
                     $conversation_id = $result->conversation->id;
         
+                    // Redirect to the conversation
                     $this->output
                         ->set_content_type('application/json')
                         ->set_output(json_encode(array('url' => conversation_url($conversation_id))));
@@ -66,18 +67,17 @@ class Browse extends CI_Controller
 	        // Determine our relationship with them
 	        $match = api_endpoint("users/$user_id/match")[0];
 	         
+	        $offset = abs(intval($this->input->post('offset')));
+	         	        
 	        // They are free to meet
 	        if (isset($match->meet->price_usd) AND $match->meet->price_usd == 0)
-	        {
-	            $offset = abs(intval($this->input->post('offset')));
-	            
+	        {	            
 	            // Start a new conversation with the user passed in via POST request
-	            api_endpoint("users/$user_id/meet", array(), true);
-	            
-	            // JSON object increases the page offset
-	            $this->js_next_profile($offset);
-	             
+	            api_endpoint("users/$user_id/meet", array(), true);	             
 	        }
+	        
+	        // JSON object increases the page offset
+	        $this->js_next_profile($offset);
 	    }	    
 	}
 	
@@ -142,7 +142,7 @@ class Browse extends CI_Controller
 		);
 		
 		$user = page_request($request, true);
-								
+			
 		// The API endpoint is returning an array with only one user in it, since we have limit => 1
 		if (isset($user[0]->id))
 		{

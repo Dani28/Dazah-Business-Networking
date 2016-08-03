@@ -198,11 +198,15 @@ class Messages extends CI_Controller
     	    $conversation_ids = $this->input->post('conversation_ids');
     	    $user_ids = $this->input->post('user_ids');
     	    
-    	    $notifications = fetch_notifications($conversation_ids, $user_ids);
-    	    
-    	    $this->output
-        	    ->set_content_type('application/json')
-        	    ->set_output(json_encode($notifications));
+    	    // If converastions exist to get notified about
+    	    if (!empty($conversation_ids) AND !empty($user_ids))
+    	    {
+        	    $notifications = fetch_notifications($conversation_ids, $user_ids);
+        	    
+        	    $this->output
+            	    ->set_content_type('application/json')
+            	    ->set_output(json_encode($notifications));
+    	    }
 	    }
 	}
 	

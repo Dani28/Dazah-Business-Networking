@@ -309,6 +309,7 @@ function replace_container(data)
 		
 		$('#browse-container').find('#user-tools').attr('data-id', browse_container.find('#user-tools').attr('data-id'));
 		$('#browse-container').find('#user-tools').attr('data-offset', browse_container.find('#user-tools').attr('data-offset'));
+		$('#browse-container').find('#user-tools').find('.meet-buttons').html(browse_container.find('#user-tools').find('.meet-buttons').html());
 	
 		$('#browse-container').find('#conversation-list').find('.list-group').replaceWith(browse_container.find('#conversation-list').find('.list-group'));
 				
@@ -342,9 +343,19 @@ function browse_action(user_tools, action)
 		
 		if (action == 'meet')
 		{
-			$('#user-profile').find('#profile-container').hide(function() {
-				replace_container(data);			
-			});			
+			var payment_link = $('#meet').attr('data-payment');
+			
+			if (typeof payment_link !== 'undefined')
+			{
+				$(location).attr('href', payment_link);
+				return false;
+			}
+			else
+			{
+				$('#user-profile').find('#profile-container').hide(function() {
+					replace_container(data);			
+				});			
+			}
 		}
 		else
 		{
