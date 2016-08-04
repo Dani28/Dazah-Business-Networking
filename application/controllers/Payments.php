@@ -18,7 +18,7 @@ class Payments extends CI_Controller
         if ($this->input->is_ajax_request())
         {
             // Retrieve the User ID
-            $user_id = $this->input->post('user_id');
+            $user_id = intval($this->input->post('user_id'));
                         
             // Starting time
             $time = time();
@@ -42,11 +42,20 @@ class Payments extends CI_Controller
             
                         $this->output
                             ->set_content_type('application/json')
-                            ->set_output(json_encode(array('url' => conversation_url($conversation_id))));                        
-                    }
+                            ->set_output(json_encode(array('url' => conversation_url($conversation_id))));  
                     
+                        // Break out of the loop
+                        break;
+                    }
+                }
+                else if (isset($match->conversation->id))
+                {
+                    $this->output
+                        ->set_content_type('application/json')
+                        ->set_output(json_encode(array('url' => conversation_url($match->conversation->id))));
+                
                     // Break out of the loop
-                    break;                    
+                    break;
                 }
                 
                 // Wait 5 seconds before trying again

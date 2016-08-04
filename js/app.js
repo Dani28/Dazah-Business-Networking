@@ -72,7 +72,7 @@ function check_for_payment(user_id)
 			}
 		},
 		complete: function(data) {
-			next_check = window.setTimeout(check_for_payment, 1000);
+			next_check = window.setTimeout(function() { check_for_payment(user_id); }, 1000);
 		}
 	});
 }

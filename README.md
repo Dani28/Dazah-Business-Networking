@@ -60,8 +60,8 @@ You will automatically receive a commission, paid out weekly, each time users of
 ## To Import Our Audience:
 
 1. Go to https://www.dazah.com/bubbles/register
-2. Import our bubble into your account with the Public Key:
+2. Import our audience segment into your account with the Public Key:
 
 	6e796a2f4a4b456f77342f2b7663676d31336879775757314c34767463565652724f782f5558756c6b4e756437654c793954575a484c426655475274466571725070573946626f6138324e48347674366e7a672f31384b70777a645a6853595848414358776f774e4c772b436a504177624665647750376a304f453134497a6e5570637a74667668624a574e6842673977565a6c4b6561623773373774657a68342b6866646e434d6872493d
 	
-3. Modify your Dazapp record to include the *Business Network* bubble
+3. Modify your Dazapp record to include the *Business Network* audience
