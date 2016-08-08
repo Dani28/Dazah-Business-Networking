@@ -1,5 +1,5 @@
 <?= $header ?>
-	<title>User Profile for <?= (isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown') . ' ' . (isset($user->profile->last_name) ? $user->profile->last_name : 'Name') ?> | Dazah</title>
+	<title>User Profile for <?= (isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name') . ' ' . (isset($user->profile->last_name) ? $user->profile->last_name : '') ?> | Dazah</title>
 </head>
 <body id="web-app">
 	
@@ -22,33 +22,33 @@
     					<?php if (isset($user->conversation->id)): ?>
     						<p>
     							<a class="btn btn-primary btn-block btn-lg" href="<?= conversation_url($user->conversation->id) ?>" role="button">Message</a>
-    							<em>You're participating in a conversation with <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?></em>
+    							<em>You're participating in a conversation with <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name' ?></em>
     						</p>			
     					<?php elseif (isset($user->meet->price_usd) AND $user->meet->price_usd == 0): ?>
     						<?php if (isset($user->relationship->skipped) AND $user->relationship->skipped): ?>
         						<p>
         							<a id="meet-profile-user" data-id="<?= $user->id ?>" class="btn btn-primary btn-block btn-lg" href="#" role="button">Meet</a>
-        							<em>You've previously skipped over <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?></em>
+        							<em>You've previously skipped over <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name' ?></em>
         						</p>
     						<?php elseif (isset($user->match->algorithmic_match) AND $user->match->algorithmic_match): ?>
         						<p>
         							<a id="meet-profile-user" data-id="<?= $user->id ?>" class="btn btn-primary btn-block btn-lg" href="#" role="button">Meet</a>
-        							<em>You were recently matched with <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?></em>
+        							<em>You were recently matched with <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name' ?></em>
         						</p>
     						<?php endif; ?>
 						<?php elseif (isset($user->meet->price_usd)): ?>
     						<div class="bg-info empty-profile">	
     							<p class="h4">You cannot start more free conversations today.</p>
-    							<p class="lead">You can still introduce yourself to <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?> by purchasing access.</p>
+    							<p class="lead">You can still introduce yourself to <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name' ?> by purchasing access.</p>
     							<a class="btn btn-primary btn-lg spaced" href="<?= isset($user->meet->payment->paypal->url) ? htmlspecialchars(payment_link($user)) : '#' ?>" role="button">Meet <?= $user->profile->first_name ?> for $<?= $user->meet->price_usd ?></a>
     						</div>
     					<?php endif; ?>
 					<?php elseif (isset($user->meet->price_usd)): ?>
 										
     						<div class="bg-info empty-profile">
-    							<p class="h3">You are not matched with <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?></p>
-    							<p class="lead">You can still introduce yourself to <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?> by purchasing access.</p>
-    							<a class="btn btn-primary btn-lg spaced" href="<?= isset($user->meet->payment->paypal->url) ? htmlspecialchars(payment_link($user)) : '#' ?>" role="button">Meet <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?> for $<?= $user->meet->price_usd ?></a>
+    							<p class="h3">You are not matched with <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name' ?></p>
+    							<p class="lead">You can still introduce yourself to <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name' ?> by purchasing access.</p>
+    							<a class="btn btn-primary btn-lg spaced" href="<?= isset($user->meet->payment->paypal->url) ? htmlspecialchars(payment_link($user)) : '#' ?>" role="button">Meet <?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name' ?> for $<?= $user->meet->price_usd ?></a>
 								<div class="small">
         							<a href="<?= site_url() ?>" class="small">Discover New Matches</a>
         						</div>

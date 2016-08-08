@@ -4,8 +4,8 @@
 		<a href="<?= conversation_url($row->conversation->id) ?>">
 			<span class="h4">    		
 			<img src="<?= extract_user($row->conversation)->thumbnail ?>" alt="Profile Picture" class="img-circle img-thumbnail" width="32" height="32">
-				<?= isset(extract_user($row->conversation)->profile->first_name) ? extract_user($row->conversation)->profile->first_name : 'Unknown' ?>
-				<?= isset(extract_user($row->conversation)->profile->last_name) ? extract_user($row->conversation)->profile->last_name : 'Name' ?>
+				<?= isset(extract_user($row->conversation)->profile->first_name) ? extract_user($row->conversation)->profile->first_name : 'Unknown Name' ?>
+				<?= isset(extract_user($row->conversation)->profile->last_name) ? extract_user($row->conversation)->profile->last_name : '' ?>
 				
 				<?php if ($row->conversation->first_message->timestamp == $row->conversation->latest_message->timestamp): ?>
 					<?php if ($row->conversation->first_message->user->id == who_am_i()->id): ?>

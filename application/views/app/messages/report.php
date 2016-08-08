@@ -24,8 +24,8 @@
 						</span>
 						<img src="<?= isset(extract_user($row->conversation)->thumbnail) ? extract_user($row->conversation)->thumbnail : '//:0' ?>" alt="Profile Picture" class="img-circle img-thumbnail" width="32" height="32">
 						<span class="h4">
-							<span><?= isset(extract_user($row->conversation)->profile->first_name) ? extract_user($row->conversation)->profile->first_name : 'Unknown' ?></span>
-							<span><?= isset(extract_user($row->conversation)->profile->last_name) ? extract_user($row->conversation)->profile->last_name : 'Name' ?></span>
+							<span><?= isset(extract_user($row->conversation)->profile->first_name) ? extract_user($row->conversation)->profile->first_name : 'Unknown Name' ?></span>
+							<span><?= isset(extract_user($row->conversation)->profile->last_name) ? extract_user($row->conversation)->profile->last_name : '' ?></span>
 						</span>
 					</a>
 			<?php endforeach; ?>

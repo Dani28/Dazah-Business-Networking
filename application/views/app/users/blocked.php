@@ -27,7 +27,7 @@
 				<?php foreach ($blocked_users AS $user): ?>
 					<tr data-id="<?= $user->id ?>">
 						<td><a href="#" class="btn btn-default btn-xs" role="button" title="Unmute User"><span class="fa fa-user-times" aria-hidden="true"></span></a></td>
-						<td class="text-nowrap"><a href="<?= profile_url($user) ?>"><?= (isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown') . ' ' . (isset($user->profile->last_name) ? $user->profile->last_name : 'Name') ?></a></td>
+						<td class="text-nowrap"><a href="<?= profile_url($user) ?>"><?= (isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name') . ' ' . (isset($user->profile->last_name) ? $user->profile->last_name : '') ?></a></td>
 						<td class="hidden-xs hidden-sm"><?= isset($user->profile->headline) ? $user->profile->headline : '' ?></td>
 						<td class="text-nowrap hidden-xs hidden-sm hidden-md"><?= get_location($user) ?></td>
 					</tr>

@@ -9,7 +9,7 @@
 							<div class="text-uppercase"><?= isset(who_am_i()->profile->first_name) ? who_am_i()->profile->first_name : 'Me' ?></div>
 						<?php else: ?>
 							<div class="text-uppercase">
-								<?= isset($users[$message->author->id]->profile->first_name) ? $users[$message->author->id]->profile->first_name : 'Unknown' ?>
+								<?= isset($users[$message->author->id]->profile->first_name) ? $users[$message->author->id]->profile->first_name : 'Unknown Name' ?>
 							</div>
 						<?php endif; ?>
 					</div>					

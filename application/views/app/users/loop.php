@@ -24,8 +24,8 @@
 				<span class="fa fa-block fa-fw"></span>		
 			<?php endif; ?>
 			<span class="h4">
-				<span><?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?></span>
-				<span><?= isset($user->profile->last_name) ? $user->profile->last_name : 'Name' ?></span>
+				<span><?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name' ?></span>
+				<span><?= isset($user->profile->last_name) ? $user->profile->last_name : '' ?></span>
 			</span>
 			
 			<br><span class="small"><?= isset($user->profile->headline) ? $user->profile->headline : '' ?></span>

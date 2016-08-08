@@ -37,9 +37,9 @@
 		<h1>
 			<span>
 				<span class="status<?= is_online($user) ? ' online' : '' ?>" data-toggle="tooltip" data-placement="top" title="Active <?= isset($user->usage->last_activity_timestamp) ? timestamp($user->usage->last_activity_timestamp) : 'Unknown' ?>"><span class="fa fa-user" aria-hidden="true"></span></span>
-				<?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?>
+				<?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name' ?>
 			</span>
-			<?= isset($user->profile->last_name) ? $user->profile->last_name : 'Name' ?>
+			<?= isset($user->profile->last_name) ? $user->profile->last_name : '' ?>
 		</h1>
 		
 		<?php if (isset($user->profile->headline)): ?>

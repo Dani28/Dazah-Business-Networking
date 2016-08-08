@@ -1,5 +1,5 @@
 <?= $header ?>
-	<title>Conversation with <?= (isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown') . ' ' . (isset($user->profile->last_name) ? $user->profile->last_name : 'Name') ?> | Dazah</title>
+	<title>Conversation with <?= (isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name') . ' ' . (isset($user->profile->last_name) ? $user->profile->last_name : '') ?> | Dazah</title>
     <link rel="stylesheet" type="text/css" href="/css/carbon.css">		
 </head>
 <body id="web-app">
@@ -8,12 +8,12 @@
 
 <?php if (isset($user->usage->available_status) AND $user->usage->available_status): ?>
 	<a href="#" class="toggle-profile bg-info">
-		<?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?> <?= isset($user->profile->last_name) ? $user->profile->last_name : 'Name' ?>
+		<?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name' ?> <?= isset($user->profile->last_name) ? $user->profile->last_name : '' ?>
 		<span class="fa fa-info-circle"></span>
 	</a>
 <?php else: ?>
 	<div class="toggle-profile bg-info">
-		<?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown' ?> <?= isset($user->profile->last_name) ? $user->profile->last_name : 'Name' ?>
+		<?= isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name' ?> <?= isset($user->profile->last_name) ? $user->profile->last_name : '' ?>
 	</div>
 <?php endif; ?>
 
