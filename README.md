@@ -48,6 +48,9 @@ Learn more about your users by pooling data with other Dazapps that have overlap
 
 Register a new Dazapp (Dazah application) at https://www.dazah.com/apps/register
 
+Note: You will need to associate your new Dazapp with a new or existing Audience Segment.
+You can create an empty collection of users, or you can import our audience segment (see below).
+
 To instantly generate revenue, click on the Modify link next to your newly registered Dazapp and fill out your PayPal email address.
 You will automatically receive a commission, paid out weekly, each time users of your application pay to connect.
  
@@ -56,6 +59,16 @@ You will automatically receive a commission, paid out weekly, each time users of
 1. Upload all files to the document root of a PHP-capable web server (nginx, apache, etc.)
 2. Modify line 26 of `/application/config/config.php` and specify your website's URL
 3. Modify lines 15 and 16 of `/application/config/dazah.php` with your Dazapp API credentials
+
+## Dazapp Directory:
+
+To be listed in the Dazapp Directory:
+
+1. Go to https://www.dazah.com/apps/register
+2. Click the Modify link next to the appropriate Dazapp
+3. Specify an Application URL of http://www.example.com/index.php (or https:// if you have an SSL certificate)
+4. Check `profile_read`, `conversations_read`, and `conversations_write` for Scope Requested
+5. Check 'Production' for Application Live?
 
 ## To Import Our Audience:
 
