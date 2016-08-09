@@ -18,7 +18,7 @@
 				<div class="col-lg-12">
 					<?= $profile_fragment ?>
 					
-					<?php if (isset($user->conversation->id) OR (isset($user->relationship->muted) AND $user->relationship->muted) OR (isset($user->relationship->skipped) AND $user->relationship->skipped) OR (isset($user->match->algorithmic_match) AND $user->match->algorithmic_match)): ?>
+					<?php if (isset($user->conversation->id) OR (isset($user->relationship->muted) AND $user->relationship->muted) OR (isset($user->match->algorithmic_match) AND $user->match->algorithmic_match)): ?>
     					<?php if (isset($user->conversation->id)): ?>
     						<p>
     							<a class="btn btn-primary btn-block btn-lg" href="<?= conversation_url($user->conversation->id) ?>" role="button">Message</a>
