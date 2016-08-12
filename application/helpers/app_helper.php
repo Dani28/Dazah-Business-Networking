@@ -11,8 +11,9 @@ function batch_api_endpoint($endpoints)
     $payload = json_encode(array(
         'requests' => $endpoints,
         'params' => array(
-            'access_token' => $ACCESS_TOKEN
-        )
+            'access_token' => $ACCESS_TOKEN,
+        ),
+        'version' => '1.1'        
     ));
 
     if ($CURL_HANDLER === null)
