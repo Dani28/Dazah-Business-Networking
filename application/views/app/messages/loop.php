@@ -15,7 +15,7 @@
 					</div>					
 		
 					<div class="panel-body">
-						<?= htmlspecialchars_decode($message->text->parsed) ?>
+						<?= htmlspecialchars_decode($message->message->parsed) ?>
 					</div>
 					
 					<div class="small pull-right last-seen">
