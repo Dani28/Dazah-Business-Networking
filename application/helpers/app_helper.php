@@ -13,7 +13,7 @@ function batch_api_endpoint($endpoints)
         'params' => array(
             'access_token' => $ACCESS_TOKEN,
         ),
-        'version' => '1'        
+        'version' => '1.1'        
     ));
 
     if ($CURL_HANDLER === null)
@@ -67,7 +67,7 @@ function api_endpoint($endpoint, $properties = array(), $post = false, $page_nav
     
     $CI =& get_instance();
     
-    $url = "https://www.dazah.com/api/v1/$endpoint?access_token=$ACCESS_TOKEN";
+    $url = "https://www.dazah.com/api/v1.1/$endpoint?access_token=$ACCESS_TOKEN";
     
     // If it's a GET request and there are parameters, add them to the URL string
     if (!$post AND !empty($properties))
@@ -633,7 +633,7 @@ function last_seen($conversation_id)
 {
     $properties = array(
         'exclude_self' => false,
-        'time_limit' => 0,
+        'timeout' => 0,
         'limit' => 100
     );
 

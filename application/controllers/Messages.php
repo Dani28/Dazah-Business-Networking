@@ -113,7 +113,7 @@ class Messages extends CI_Controller
 	        'params' => array(
 	        'exclude_self' => false,
 	        'record_seen' => true,
-	        'time_limit' => 0
+	        'timeout' => 0
         )
 	    );
 	    
@@ -156,10 +156,10 @@ class Messages extends CI_Controller
     	    $message_id = intval($this->input->post('message_id'));
     	
     	    $properties = array(
-    	        'message_id' => $message_id,
+    	        'gt_message_id' => $message_id,
     	        'exclude_self' => true,
     	        'record_seen' => true,
-    	        'time_limit' => 15
+    	        'timeout' => 15
     	    );
     	
     	    // Call the API endpoint
