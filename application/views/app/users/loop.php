@@ -32,7 +32,7 @@
 			<br><span class="small"><?= isset($user->profile->pitch) ? $user->profile->pitch : '' ?></span>
 
 			<br><span><?= get_location($user) ?></span>
-			<br><span class="small"><?= number_format($user->match->distance_away->miles, 2) ?> miles away</span>
+			<br><span class="small"><?= isset($user->match->distance_away) ? number_format($user->match->distance_away->miles, 2) . ' miles away' : '' ?></span>
 
 			<span class="view-profile btn btn-info btn-xs"><span class="fa fa-info-circle" aria-hidden="true"></span> Profile</span>
 		</a>
