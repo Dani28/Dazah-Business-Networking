@@ -56,7 +56,13 @@ class Messages extends CI_Controller
 		    $properties = array(
 		        'offset' => $offset,
 		        'limit' => 12,
-		        'query' => $query_string
+		        'first_name' => '3:' . strtok($query_string, ' '),
+		        'last_name' => '3:' . strtok(' '),
+		        'headline' => '2:' . $query_string,
+		        'pitch' => '2:' . $query_string,
+		        'city' => '1:' . $query_string,
+		        'region' => '1:' . $query_string,
+		        'country' => '1:' . $query_string
 		    );
 		    
 		    $url = site_url('messages/search/' . urlencode($query_string));
