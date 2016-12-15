@@ -1,4 +1,4 @@
-# Build your own "Tinder-for-Business" lead generation platform
+# Business Networking tool and lead generation platform
 
 This app is built on top of the Dazah API. Dazah is a user recommendation engine and chat network designed to power communities and lead generation platforms.
 Members of Dazah-powered communities enjoy an ability to discover, connect and message each other through a sophisticated matching algorithm.
