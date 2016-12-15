@@ -13,6 +13,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 $config = array(
     'client_id' => 'b',
-    'client_secret' => 'Random secret string',
+    'client_secret' => 'Jnqj2LBN2LD8ktKXsC2AbJP769Ln5hAHGKcvXgA4PUl8mApM3E',
     'scope' => 'profile_read,conversations_read,conversations_write'            
 );
