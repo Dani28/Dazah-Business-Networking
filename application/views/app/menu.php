@@ -72,6 +72,7 @@
 						</a>
 						<ul id="user-menu" class="dropdown-menu">						
 							<li class="mobile-menu<?= uri_string() == 'profile/view' ? ' active' : '' ?>"><a href="<?= site_url('profile/view') ?>"><span class="fa fa-fw fa-user"></span>View My Profile</a></li>
+							<li class="mobile-menu"><a href="https://www.dazah.com/profile/update"><span class="fa fa-fw fa-external-link"></span>Update Dazah Match Profile</a></li>
 							<li role="separator" class="divider"></li>
 							<li class="mobile-menu<?= uri_string() == 'messages/report' ? ' active' : '' ?>"><a href="<?= site_url('messages/report') ?>"><span class="fa fa-fw fa-comment"></span>My Conversations</a></li>
 							<li class="mobile-menu<?= uri_string() == 'users/skipped' ? ' active' : '' ?>"><a href="<?= site_url('users/skipped') ?>"><span class="fa fa-fw fa-undo"></span>Users I've Skipped</a></li>
