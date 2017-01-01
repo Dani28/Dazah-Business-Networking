@@ -16,15 +16,15 @@
 	<link href="//fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet" type="text/css">	
 	
 	<!-- Dazah CSS -->
-	<link rel="stylesheet" type="text/css" href="<?= site_url('css/app.css') ?>">
+	<link rel="stylesheet" type="text/css" href="<?= base_url('css/app.css') ?>">
 
 	<!-- jQuery and jQuery UI -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 	
 	<!-- Dazah JS -->	
-	<script type="text/javascript" src="<?= site_url('js/editor.js') ?>"></script>
-	<script type="text/javascript" src="<?= site_url('js/app.js') ?>"></script>
+	<script type="text/javascript" src="<?= base_url('js/editor.js') ?>"></script>
+	<script type="text/javascript" src="<?= base_url('js/app.js') ?>"></script>
 
 	<script type="text/javascript">var site_url = '<?= site_url() ?>';</script>	
 
