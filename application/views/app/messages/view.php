@@ -1,6 +1,6 @@
 <?= $header ?>
 	<title>Conversation with <?= (isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name') . ' ' . (isset($user->profile->last_name) ? $user->profile->last_name : '') ?> | Dazah</title>
-    <link rel="stylesheet" type="text/css" href="/css/carbon.css">		
+    <link rel="stylesheet" type="text/css" href="<?= site_url('css/carbon.css') ?>">		
 </head>
 <body id="web-app">
 	
