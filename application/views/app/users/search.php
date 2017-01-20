@@ -1,5 +1,5 @@
 <?= $header ?>
-	<title>User Search | Dazah</title>
+	<title>User Search | Business Network</title>
 </head>
 <body>
 

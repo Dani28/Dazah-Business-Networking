@@ -1,5 +1,5 @@
 <?= $header ?>
-	<title>User Profile for <?= (isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name') . ' ' . (isset($user->profile->last_name) ? $user->profile->last_name : '') ?> | Dazah</title>
+	<title>User Profile for <?= (isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name') . ' ' . (isset($user->profile->last_name) ? $user->profile->last_name : '') ?> | Business Network</title>
 </head>
 <body id="web-app">
 	

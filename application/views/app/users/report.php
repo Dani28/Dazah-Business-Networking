@@ -1,5 +1,5 @@
 <?= $header ?>
-	<title>My Connections | Dazah</title>
+	<title>My Connections | Business Network</title>
 </head>
 <body>
 

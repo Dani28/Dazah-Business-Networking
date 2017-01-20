@@ -1,6 +1,5 @@
 <?= $header ?>
-	<title>Browse User Profiles | Dazah</title>
-    <link rel="stylesheet" type="text/css" href="<?= base_url('css/carbon.css') ?>">		
+	<title>Browse User Profiles | Business Network</title>
 </head>
 <body id="web-app">
 	
@@ -61,9 +60,7 @@
 							<li><kbd>DEL</kbd> Delete to <strong>mute</strong></li>
 						</ul>
 					</div>
-					
-					<div id="browse-carbon" class="clearfix"></div>
-					
+										
 				</div>
 			</div>		
 		</div>

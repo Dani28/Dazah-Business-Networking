@@ -1,5 +1,5 @@
 <?= $header ?>
-	<title>Skipped Users | Dazah</title>
+	<title>Skipped Users | Business Network</title>
 </head>
 <body>
 

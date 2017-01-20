@@ -1,5 +1,5 @@
 <?= $header ?>
-	<title>Oops | Dazah</title>
+	<title>Oops | Business Network</title>
 </head>
 <body id="web-app">
 	

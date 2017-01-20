@@ -1,5 +1,5 @@
 <?= $header ?>
-	<title>Nearby Users | Dazah</title>
+	<title>Nearby Users | Business Network</title>
 </head>
 <body>
 

@@ -1,5 +1,5 @@
 <?= $header ?>
-	<title>Process Payment | Dazah</title>
+	<title>Process Payment | Business Network</title>
 </head>
 <body id="web-app">
 	

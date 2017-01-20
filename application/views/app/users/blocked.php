@@ -1,5 +1,5 @@
 <?= $header ?>
-	<title>Muted Users | Dazah</title>
+	<title>Muted Users | Business Network</title>
 </head>
 <body>
 

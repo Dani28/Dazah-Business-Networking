@@ -1,5 +1,5 @@
 <?= $header ?>
-	<title>Conversations | Dazah</title>
+	<title>Conversations | Business Network</title>
 </head>
 <body>
 

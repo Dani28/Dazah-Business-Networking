@@ -1,5 +1,5 @@
 <?= $header ?>
-	<title>Quota Reached | Dazah</title>
+	<title>Quota Reached | Business Network</title>
 </head>
 <body id="web-app">
 	
