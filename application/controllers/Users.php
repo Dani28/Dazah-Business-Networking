@@ -76,6 +76,23 @@ class Users extends CI_Controller
 	    $this->load->view('app/users/nearby', $this->wb_template->get());
 	}
 	
+	public function logout()
+	{
+	    destroy_access_token();
+	    
+	    $this->config->load('dazah');
+	    
+	    $oauth_credentials = array(
+	        'client_id' => $this->config->item('client_id'),
+	        'client_secret' => $this->config->item('client_secret'),
+	        'scope' => $this->config->item('scope')
+	    );
+	    
+	    $current_url = site_url('browse/index/' . uniqid());
+	    
+	    redirect("https://www.dazah.com/oauth/auth?response_type=code&client_id={$oauth_credentials['client_id']}&scope={$oauth_credentials['scope']}&redirect_uri=".urlencode($current_url));
+	}
+	
 	public function index($order_by = 'id', $offset = 0)
 	{
 		$page_nav = generate_page_nav($offset, 50, site_url("users/index/$order_by"));

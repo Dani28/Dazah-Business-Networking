@@ -9,8 +9,6 @@ $(function() {
 		iconlibrary: 'fa'
 	});
 	
-	load_ad_in_conversation();
-	load_ad();
 	resize_conversation_log();
 	resize_user_profile($('#full-profile #user-profile'));
 	poll_conversation();
@@ -260,30 +258,6 @@ function update_notifications()
 
 
 
-//ADVERTISING
-
-function load_ad()
-{
-	if (window.innerWidth >= 1200)
-	{
-		var ad = $("<script />", {
-			src: '//cdn.carbonads.com/carbon.js?zoneid=1698&serve=CVYD42E&placement=dazahcom',
-			id: '_carbonads_js'
-		});
-		$('#browse-carbon').html(ad);
-	}	
-}
-
-function load_ad_in_conversation()
-{
-	if (window.innerWidth >= 1200)
-	{
-		$('#carbon').html($("<script />", {
-			src: '//cdn.carbonads.com/carbon.js?zoneid=1698&serve=CVYD42E&placement=dazahcom',
-			id: '_carbonads_js'
-		}));		
-	}	
-}
 
 //AJAX PREVIOUS / NEXT USER WHEN BROWSING
 
@@ -325,7 +299,6 @@ function reload_container(url)
 {
 	$('#browse-container').load(url + ' #browse-container > .row', function() {
 		resize_conversation_log();
-		load_ad();
 		
 		update_notifications();
 		$('.tooltip').remove();
@@ -375,9 +348,7 @@ function browse_action(user_tools, action)
 			window.location.hash = '!' + data.url;
 		}
 	});
-	
-	load_ad();
-	
+		
 	ga('send', 'event', 'Profiles', 'Browse', action, offset);
 	return false;
 }

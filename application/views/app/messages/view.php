@@ -1,6 +1,5 @@
 <?= $header ?>
 	<title>Conversation with <?= (isset($user->profile->first_name) ? $user->profile->first_name : 'Unknown Name') . ' ' . (isset($user->profile->last_name) ? $user->profile->last_name : '') ?> | Dazah</title>
-    <link rel="stylesheet" type="text/css" href="<?= base_url('css/carbon.css') ?>">		
 </head>
 <body id="web-app">
 	
@@ -60,8 +59,7 @@
 	<div class="container-fluid">
 		
 		<form id="send-message" class="row">
-			<div class="col-sm-3"><div id="carbon" class="clearfix"></div></div>
-			<div class="col-sm-9 col-xs-8">
+			<div class="col-sm-9 col-sm-offset-3 col-xs-8">
 				<div class="form-group">
 					<label for="message" class="control-label sr-only">Message</label>
 					<textarea class="form-control input-lg" id="message-input" rows="3" placeholder="Type a message &hellip;"></textarea>

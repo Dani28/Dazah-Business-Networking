@@ -2,7 +2,7 @@
 	<?php if (current_url() != site_url()): ?>
 		<a href="<?= site_url('browse/profile') ?>" class="add" title="Meet Users"><span class="fa fa-fw fa-plus" aria-hidden="true"></span>Meet</a>
 	<?php endif; ?>
-	<span>My Active Conversations</span>
+	<span>Conversations</span>
 </div>
 
 <?php if (!empty($conversations)): ?>

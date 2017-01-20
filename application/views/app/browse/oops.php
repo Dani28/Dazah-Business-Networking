@@ -1,6 +1,5 @@
 <?= $header ?>
 	<title>Oops | Dazah</title>
-    <link rel="stylesheet" type="text/css" href="<?= base_url('css/carbon.css') ?>">		
 </head>
 <body id="web-app">
 	

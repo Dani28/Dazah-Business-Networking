@@ -22,14 +22,12 @@ body
 nav.navbar-default
 {
 	border: none;
-	background-color: #4cb992;
+	background-color: #269abc;
 }
 
 nav a.navbar-brand
 {
-	letter-spacing: 5px;
 	text-transform: uppercase;
-	font-weight: 300;
 	color: white!important;
 }
 
@@ -56,7 +54,7 @@ nav.navbar-default ul.nav > li.open > a
 
 nav.navbar-default #mobile-dropdown
 {
-	background-color: #4cb992;
+	background-color: #269abc;
 	padding: 5px;
 }
 
@@ -109,7 +107,7 @@ li.ui-autocomplete-category
 
 li.ui-state-focus
 {
-	background-color: #F5F5F5!important;
+	background: #F5F5F5!important;
 	border-bottom: 1px solid #ddd!important;
 	border-top: 1px solid #ddd!important;
 	color: #555!important;
@@ -241,7 +239,7 @@ span.status
 
 span.status.online
 {
-	color: #4cb992;
+	color: #269abc;
 }
 
 a.active span.status.online
@@ -297,7 +295,6 @@ a.list-group-item:hover
 
 nav.navbar-default .btn
 {
-	border-color: white;
 	margin-right: 10px;
 }
 
@@ -309,7 +306,7 @@ nav.navbar-default .btn
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus
 {
-	background-color: #4cb992!important;
+	background-color: #269abc!important;
 }
 
 /********************************/
@@ -346,7 +343,7 @@ nav.navbar-default .btn
 
 #conversation-list.sidebar-offcanvas a.active
 {
-	background-color: #4cb992;
+	background-color: #269abc;
 	border-color: white!important;
 }
 
@@ -362,7 +359,7 @@ nav.navbar-default .btn
 	right: 10px;
 	padding: 5px 0;
 	bottom: 0;
-	color: #4cb992!important;
+	color: white!important;
 	text-transform: none;
 	text-decoration: none;
 	width: 80px;
@@ -385,7 +382,7 @@ nav.navbar-default .btn
 
 #conversation-list.sidebar-offcanvas a.more:hover
 {
-	color: #4cb992;
+	color: #269abc;
 }
 
 /**********************/
@@ -394,13 +391,13 @@ nav.navbar-default .btn
 
 div#conversation-log div.panel-primary
 {
-	border-color: #4cb992;
+	border-color: #269abc;
 }
 
 div#conversation-log div.panel-primary > div.panel-heading
 {
-	background-color: #4cb992;
-	border-color: #4cb992;
+	background-color: #269abc;
+	border-color: #269abc;
 }
 
 /**************************************/
@@ -695,11 +692,6 @@ ul.ui-autocomplete
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
-}
-
-li.ui-state-focus
-{
-	background: none!important;
 }
 
 .ui-autocomplete-loading

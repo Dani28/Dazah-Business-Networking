@@ -15,7 +15,7 @@
 	
 		<!-- Logo -->
 		<div class="navbar-header">		
-			<a class="navbar-brand" href="<?= site_url() ?>">Dazah</a>
+			<a class="navbar-brand" href="<?= site_url() ?>">Business Network</a>
 		</div>
 		
 		
@@ -24,7 +24,6 @@
 			<div id="mobile-dropdown" class="row">
 				<ul id="mobile-user-menu" class="nav navbar-nav col-xs-6"></ul>
 				<ul id="mobile-users-menu" class="nav navbar-nav col-xs-6"></ul>		
-
 				<div id="mobile-search" class="nav navbar-nav col-xs-6"></div>				
 			</div>		
 
@@ -35,7 +34,7 @@
 					<div class="form-group">
 						<input id="people-search" type="search" name="query" class="form-control" placeholder="People Search">
 					</div>
-					<button type="submit" class="btn btn-info"><span class="fa fa-search" aria-hidden="true"></span></button>
+					<button type="submit" class="btn btn-primary"><span class="fa fa-search" aria-hidden="true"></span></button>
 				</form>			
 			
 				<ul class="nav navbar-nav pull-right">			
@@ -77,6 +76,8 @@
 							<li class="mobile-menu<?= uri_string() == 'messages/report' ? ' active' : '' ?>"><a href="<?= site_url('messages/report') ?>"><span class="fa fa-fw fa-comment"></span>My Conversations</a></li>
 							<li class="mobile-menu<?= uri_string() == 'users/skipped' ? ' active' : '' ?>"><a href="<?= site_url('users/skipped') ?>"><span class="fa fa-fw fa-undo"></span>Users I've Skipped</a></li>
 							<li class="mobile-menu<?= uri_string() == 'users/blocked' ? ' active' : '' ?>"><a href="<?= site_url('users/blocked') ?>"><span class="fa fa-fw fa-user-times"></span>Users I've Muted</a></li>
+							<li role="separator" class="divider"></li>
+							<li class="mobile-menu"><a href="<?= site_url('users/logout') ?>"><span class="fa fa-fw fa-sign-out"></span>Logout</a>
 						</ul>
 					</li>		
 				</ul>

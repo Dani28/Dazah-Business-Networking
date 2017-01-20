@@ -13,7 +13,7 @@ function batch_api_endpoint($endpoints)
         'params' => array(
             'access_token' => $ACCESS_TOKEN,
         ),
-        'version' => '1.1'        
+        'version' => '2'        
     ));
 
     if ($CURL_HANDLER === null)
@@ -67,7 +67,7 @@ function api_endpoint($endpoint, $properties = array(), $post = false, $page_nav
     
     $CI =& get_instance();
     
-    $url = "https://www.dazah.com/api/v1.1/$endpoint?access_token=$ACCESS_TOKEN";
+    $url = "https://www.dazah.com/api/v2/$endpoint?access_token=$ACCESS_TOKEN";
     
     // If it's a GET request and there are parameters, add them to the URL string
     if (!$post AND !empty($properties))
@@ -197,6 +197,13 @@ function retrieve_access_token()
             redirect(current_url());
         }
     }
+}
+
+function destroy_access_token()
+{
+    $CI =& get_instance();
+    
+    $CI->input->set_cookie('access_token');
 }
 
 function detect_expired_token($response)
