@@ -1,4 +1,4 @@
-<div class="spaced">
+<div id="advanced-search" class="spaced">
 
 	<div class="h2">Advanced Search</div>
 

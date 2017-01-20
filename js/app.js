@@ -654,10 +654,18 @@ $(document).on('click', '.view-profile', function(event) {
 
 $(function() {
 	var people_search = $('#people-search');
+	var advanced_search = $('#first-name, #last-name');
 	people_search.catcomplete({
 		source: base_url('messages/js_search'),
 		minLength: 2
 	});	
+	if (advanced_search.length)
+	{
+		advanced_search.catcomplete({
+			source: base_url('messages/js_search'),
+			minLength: 2
+		});	
+	}
 	if (window.innerWidth >= 992)
 	{
 		people_search.attr('placeholder', 'Search for People, Places or Interests');
