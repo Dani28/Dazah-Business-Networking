@@ -24,6 +24,7 @@
 	
 	<?= isset($pagination) ? $pagination : '' ?>
 	
+	<?= $advanced_search ?>
 	
 </div>
 

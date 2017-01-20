@@ -676,9 +676,9 @@ function generate_page_nav($offset = 0, $per_page = 50, $url = null)
 
     $page_nav = array(
         'base_url' => $url,
-        'first_url' => $url,
+        'first_url' => $url . '?' . http_build_query($CI->input->get()),
         'per_page' => $per_page,
-        'offset' => $offset
+        'offset' => $offset,
     );
 
     if ($page == 1)

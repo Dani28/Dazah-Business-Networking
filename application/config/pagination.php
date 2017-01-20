@@ -19,6 +19,7 @@ $config = array(
 	'prev_link' => '<span aria-hidden="true">&laquo;</span>',
 	'first_link' => 'First',
 	'last_link' => 'Last',
+    'suffix' => '?' . http_build_query($this->input->get())    
 );
 
 

@@ -32,25 +32,10 @@ class Messages extends CI_Controller
 		}
 	}
 	
-	public function search($query = '', $offset = 0)
+	public function search($offset = 0)
 	{
 		$query_string = $this->input->get('query');
-		
-		// We check the query string first
-		if ($query_string === null)
-		{
-		    $query_string = $query;
-		}
-		
-		// We check the URI first
-		if (empty($offset))
-		{
-		    $offset = abs(intval($this->input->get('offset')));
-		}
-		
-		// Decode the URL that we encoded in the Message helper fn
-		$query_string = urldecode($query_string);		
-				
+										
 		if (strlen($query_string) >= 2)
 		{
 		    $properties = array(
@@ -66,7 +51,7 @@ class Messages extends CI_Controller
 		        'metadata_tags' => '4:' . $query_string
 		    );
 		    
-		    $url = site_url('messages/search/' . urlencode($query_string));
+		    $url = site_url('messages/search');
 		    
 		    $page_nav = generate_page_nav($offset, 12, $url);
 		    
@@ -79,9 +64,13 @@ class Messages extends CI_Controller
 		    $this->wb_template->assign('users', $users);
 		    $this->wb_template->assign('searched_users', $this->load->view('app/users/loop', $this->wb_template->get(), true), true);
 		    
+		    // Advanced Search Form
+		    $this->wb_template->assign('advanced_search', $this->load->view('app/users/advanced_search', $this->wb_template->get(), true), true);
+		    
+		    
 		    build_menu();
 		    
-		    $this->load->view('app/users/search', $this->wb_template->get());	    
+		    $this->load->view('app/users/search', $this->wb_template->get());
 		}
 		else
 		{

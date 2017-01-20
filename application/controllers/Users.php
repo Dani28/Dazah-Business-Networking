@@ -76,6 +76,73 @@ class Users extends CI_Controller
 	    $this->load->view('app/users/nearby', $this->wb_template->get());
 	}
 	
+	public function search($offset = 0)
+	{
+	    build_menu();
+	     	    
+	    // Retrieve all form data
+		$query = $this->input->get();
+		
+		// We check the URI first
+		if (empty($offset))
+		{
+		    $offset = abs(intval($this->input->get('offset')));
+		}
+			
+	    $properties = array(
+	        'offset' => $offset,
+	        'limit' => 12
+	    );
+	    
+	    // Fields we want to search against
+	    $fields = array(
+	        'first_name',
+	        'last_name',
+	        'headline',
+	        'pitch',
+	        'city',
+	        'region',
+	        'country',
+	        'metadata_tags'
+	    );
+	    
+	    // Loop through each field
+	    foreach ($fields AS $field)
+	    {
+	        // If field exists and has data
+	        if (isset($query[$field]) AND !empty($query[$field]))
+	        {    	        
+    	        $properties[$field] = '';
+    	        
+    	        // If a weight is set and not empty
+    	        if (isset($query[$field . '_weight']) AND !empty($query[$field . '_weight']))
+    	        {
+    	            $properties[$field] = $query[$field . '_weight'] . ':';
+    	        }
+    	        
+    	        $properties[$field] .= $query[$field];
+	        }       
+	    }
+	    	    
+	    $url = site_url('users/search');
+	    
+	    $page_nav = generate_page_nav($offset, 12, $url);
+	    
+	    // Retrieve one page of users
+	    $response = api_endpoint('users/search', $properties, false, $page_nav);
+	    
+	    // Determine our relationship with them
+	    $users = user_matches($response);
+	    
+	    $this->wb_template->assign('users', $users);
+	    $this->wb_template->assign('searched_users', $this->load->view('app/users/loop', $this->wb_template->get(), true), true);
+	    
+	    // Advanced Search Form
+	    $this->wb_template->assign('advanced_search', $this->load->view('app/users/advanced_search', $this->wb_template->get(), true), true);	     
+	    
+	    $this->load->view('app/users/search', $this->wb_template->get());	 
+	}
+	
 	public function logout()
 	{
 	    destroy_access_token();
