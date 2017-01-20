@@ -9,7 +9,16 @@
 		
 	<div id="conversation-list" class="search-conversations clearfix">
 		<div class="list-group">
-		<?= $searched_users ?>
+		<?php if (trim($searched_users) == ''): ?>
+			<div class="alert alert-danger">
+				<p>
+					Sorry, no profiles currently match your search criteria.
+					Please check back soon because we are adding new users to our database every day!
+				</p>
+			</div>
+		<?php else: ?>
+			<?= $searched_users ?>
+		<?php endif; ?>
 		</div>		
 	</div>	
 	
