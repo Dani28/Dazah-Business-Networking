@@ -17,10 +17,10 @@
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th><a href="<?= site_url('users/skipped') ?>">Name</a></th>
+					<th><a href="<?= site_url('users/skipped/first_name') ?>">Name</a></th>
 					<th><a href="<?= site_url('users/skipped/last_activity') ?>">Last Activity</a></th>
-					<th class="hidden-xs hidden-sm"><a href="<?= site_url('users/skipped/headline') ?>">Headline</a></th>
-					<th class="hidden-xs hidden-sm hidden-md"><a href="<?= site_url('users/skipped/location') ?>">Location</a></th>
+					<th class="hidden-xs hidden-sm">Headline</th>
+					<th class="hidden-xs hidden-sm hidden-md">Location</th>
 				</tr>
 			</thead>
 			<tbody>

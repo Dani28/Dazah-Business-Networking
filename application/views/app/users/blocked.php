@@ -18,9 +18,9 @@
 			<thead>
 				<tr>
 					<th></th>
-					<th><a href="<?= site_url('users/blocked') ?>">Name</a></th>
-					<th class="hidden-xs"><a href="<?= site_url('users/blocked/headline') ?>">Headline</a></th>
-					<th class="hidden-xs hidden-sm hidden-md"><a href="<?= site_url('users/blocked/location') ?>">Location</a></th>
+					<th><a href="<?= site_url('users/blocked/first_name') ?>">Name</a></th>
+					<th class="hidden-xs">Headline</th>
+					<th class="hidden-xs hidden-sm hidden-md">Location</th>
 				</tr>
 			</thead>
 			<tbody>
