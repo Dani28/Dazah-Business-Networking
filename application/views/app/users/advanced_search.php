@@ -10,7 +10,7 @@
 	<form action="<?= site_url('users/search') ?>" class="form-horizontal" role="search">
 		<div class="form-group">
 			<div class="col-sm-8">
-				<input id="first-name" type="search" name="first_name" class="form-control" placeholder="First Name" value="<?= $this->input->get('first_name') ?>">
+				<input id="first-name" type="search" name="first_name" class="form-control" placeholder="First Name" value="<?= isset($query['first_name']) ? $query['first_name'] : '' ?>">
 			</div>
 			<div class="col-sm-4">
 				<select id="weight-first-name" name="weight_first_name" class="form-control">
@@ -22,7 +22,7 @@
 		</div>
 		<div class="form-group">
 			<div class="col-sm-8">
-				<input id="last-name" type="search" name="last_name" class="form-control" placeholder="Last Name" value="<?= $this->input->get('last_name') ?>">
+				<input id="last-name" type="search" name="last_name" class="form-control" placeholder="Last Name" value="<?= isset($query['last_name']) ? $query['last_name'] : '' ?>">
 			</div>
 			<div class="col-sm-4">
 				<select id="weight-last-name" name="weight_last_name" class="form-control">
@@ -34,7 +34,7 @@
 		</div>
 		<div class="form-group">
 			<div class="col-sm-8">
-				<input id="headline" type="search" name="headline" class="form-control" placeholder="Headline" value="<?= $this->input->get('headline') ?>">
+				<input id="headline" type="search" name="headline" class="form-control" placeholder="Headline" value="<?= isset($query['headline']) ? $query['headline'] : '' ?>">
 			</div>
 			<div class="col-sm-4">
 				<select id="weight-headline" name="weight_headline" class="form-control">
@@ -46,7 +46,7 @@
 		</div>
 		<div class="form-group">
 			<div class="col-sm-8">
-				<input id="pitch" type="search" name="pitch" class="form-control" placeholder="Pitch" value="<?= $this->input->get('pitch') ?>">
+				<input id="pitch" type="search" name="pitch" class="form-control" placeholder="Pitch" value="<?= isset($query['pitch']) ? $query['pitch'] : '' ?>">
 			</div>
 			<div class="col-sm-4">
 				<select id="weight-pitch" name="weight_pitch" class="form-control">
@@ -58,7 +58,7 @@
 		</div>
 		<div class="form-group">
 			<div class="col-sm-8">
-				<input id="city" type="search" name="city" class="form-control" placeholder="City" value="<?= $this->input->get('city') ?>">
+				<input id="city" type="search" name="city" class="form-control" placeholder="City" value="<?= isset($query['city']) ? $query['city'] : '' ?>">
 			</div>
 			<div class="col-sm-4">
 				<select id="weight-city" name="weight_city" class="form-control">
@@ -70,7 +70,7 @@
 		</div>
 		<div class="form-group">
 			<div class="col-sm-8">
-				<input id="region" type="search" name="region" class="form-control" placeholder="Region" value="<?= $this->input->get('region') ?>">
+				<input id="region" type="search" name="region" class="form-control" placeholder="Region" value="<?= isset($query['region']) ? $query['region'] : '' ?>">
 			</div>
 			<div class="col-sm-4">
 				<select id="weight-region" name="weight_region" class="form-control">
@@ -82,7 +82,7 @@
 		</div>
 		<div class="form-group">
 			<div class="col-sm-8">
-				<input id="country" type="search" name="country" class="form-control" placeholder="Country" value="<?= $this->input->get('country') ?>">
+				<input id="country" type="search" name="country" class="form-control" placeholder="Country" value="<?= isset($query['country']) ? $query['country'] : '' ?>">
 			</div>
 			<div class="col-sm-4">
 				<select id="weight-country" name="weight_country" class="form-control">
@@ -94,7 +94,7 @@
 		</div>
 		<div class="form-group">
 			<div class="col-sm-8">
-				<input id="tags" type="search" name="metadata_tags" class="form-control" placeholder="Skills and Interests Tags" value="<?= $this->input->get('metadata_tags') ?>">
+				<input id="tags" type="search" name="metadata_tags" class="form-control" placeholder="Skills and Interests Tags" value="<?= isset($query['metadata_tags']) ? $query['metadata_tags'] : '' ?>">
 			</div>
 			<div class="col-sm-4">
 				<select id="weight-metadata-tags" name="weight_metadata_tags" class="form-control">

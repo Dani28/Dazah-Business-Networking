@@ -138,6 +138,7 @@ class Users extends CI_Controller
 	    $this->wb_template->assign('searched_users', $this->load->view('app/users/loop', $this->wb_template->get(), true), true);
 	    
 	    // Advanced Search Form
+	    $this->wb_template->assign('query', $query);
 	    $this->wb_template->assign('advanced_search', $this->load->view('app/users/advanced_search', $this->wb_template->get(), true), true);	     
 	    
 	    $this->load->view('app/users/search', $this->wb_template->get());	 
