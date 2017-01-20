@@ -7,9 +7,11 @@
 				<button type="button" class="navbar-toggle collapsed" id="toggle-dropdown">
 					<span class="fa fa-navicon" aria-hidden="true"></span>
 				</button>
-				<button type="button" class="navbar-toggle collapsed" id="offcanvas">
-					<span class="fa fa-comment" aria-hidden="true"></span>
-				</button>			
+				<?php if (!isset($no_sidebar)): ?>
+    				<button type="button" class="navbar-toggle collapsed" id="offcanvas">
+    					<span class="fa fa-comment" aria-hidden="true"></span>
+    				</button>			
+				<?php endif; ?>
 			<?php endif; ?>
 		</div>			
 	
@@ -59,6 +61,7 @@
 						<ul id="users-menu" class="dropdown-menu">
 							<li class="mobile-menu<?= uri_string() == '' ? ' active' : '' ?>"><a href="<?= site_url() ?>"><span class="fa fa-fw fa-bullseye"></span>Discover New Matches</a></li>
 							<li class="mobile-menu<?= uri_string() == 'users/nearby' ? ' active' : '' ?>"><a href="<?= site_url('users/nearby') ?>"><span class="fa fa-fw fa-home"></span>Users Nearby Me</a></li>					
+							<li class="mobile-menu<?= uri_string() == 'users/search' ? ' active' : '' ?>"><a href="<?= site_url('users/search') ?>"><span class="fa fa-fw fa-search"></span>Advanced Search</a></li>	
 						</ul>
 					</li>			
 
@@ -74,6 +77,7 @@
 							<li class="mobile-menu"><a href="https://www.dazah.com/profile/update"><span class="fa fa-fw fa-external-link"></span>Update Dazah Match Profile</a></li>
 							<li role="separator" class="divider"></li>
 							<li class="mobile-menu<?= uri_string() == 'messages/report' ? ' active' : '' ?>"><a href="<?= site_url('messages/report') ?>"><span class="fa fa-fw fa-comment"></span>My Conversations</a></li>
+							<li class="mobile-menu<?= uri_string() == 'users' ? ' active' : '' ?>"><a href="<?= site_url('users') ?>"><span class="fa fa-fw fa-comments"></span>My Connections</a></li>
 							<li class="mobile-menu<?= uri_string() == 'users/skipped' ? ' active' : '' ?>"><a href="<?= site_url('users/skipped') ?>"><span class="fa fa-fw fa-undo"></span>Users I've Skipped</a></li>
 							<li class="mobile-menu<?= uri_string() == 'users/blocked' ? ' active' : '' ?>"><a href="<?= site_url('users/blocked') ?>"><span class="fa fa-fw fa-user-times"></span>Users I've Muted</a></li>
 							<li role="separator" class="divider"></li>

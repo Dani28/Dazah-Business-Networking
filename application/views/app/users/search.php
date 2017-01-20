@@ -9,7 +9,7 @@
 		
 	<div id="conversation-list" class="search-conversations clearfix">
 		<div class="list-group">
-		<?php if (trim($searched_users) == ''): ?>
+		<?php if (trim($searched_users) == '' AND count($this->input->get()) > 0): ?>
 			<div class="alert alert-danger">
 				<p>
 					Sorry, no profiles currently match your search criteria.

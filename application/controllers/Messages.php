@@ -67,7 +67,7 @@ class Messages extends CI_Controller
 		    // Advanced Search Form
 		    $this->wb_template->assign('advanced_search', $this->load->view('app/users/advanced_search', $this->wb_template->get(), true), true);
 		    
-		    
+		    $this->wb_template->assign('no_sidebar', true);
 		    build_menu();
 		    
 		    $this->load->view('app/users/search', $this->wb_template->get());
@@ -95,6 +95,7 @@ class Messages extends CI_Controller
 	    	    
 	    $this->wb_template->assign('conversations', $conversations);
 	    
+	    $this->wb_template->assign('no_sidebar', true);
 	    build_menu();
 	    
 	    $this->load->view('app/messages/report', $this->wb_template->get());
@@ -107,10 +108,10 @@ class Messages extends CI_Controller
 	    $request = array(
 	        'url' => "conversations/$id/poll",
 	        'params' => array(
-	        'exclude_self' => false,
-	        'record_seen' => true,
-	        'timeout' => 0
-        )
+    	        'exclude_self' => false,
+    	        'record_seen' => true,
+    	        'timeout' => 0
+            )
 	    );
 	    
 	    $messages = page_request($request, true);
@@ -119,6 +120,9 @@ class Messages extends CI_Controller
 	    {
 	        // Retrieve the conversation
 	        $conversation = api_endpoint("conversations/$id");
+	        
+	        // Unarchive it
+	        api_endpoint("conversations/$id/unarchive");
 	        
 	        $output = process_messages($messages);
 	        	        
@@ -233,7 +237,7 @@ class Messages extends CI_Controller
             $this->wb_template->assign('users', $users);
             $this->wb_template->assign('messages', array($new_message));
             $parsed_messages = $this->load->view('app/messages/loop', $this->wb_template->get(), true);
-    	
+            
             $this->output
                 ->set_content_type('application/json')
                 ->set_output(json_encode(array(

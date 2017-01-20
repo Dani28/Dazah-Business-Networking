@@ -7,7 +7,7 @@
 
 <div class="container">
 	
-	<?= $pagination ?>
+	<?= isset($pagination) ? $pagination : '' ?>
 
 	<div id="conversation-list" class="all-conversations clearfix">
 		<div class="list-group">
@@ -32,7 +32,7 @@
 		</div>
 	</div>
 	
-	<?= $pagination ?>
+	<?= isset($pagination) ? $pagination : '' ?>
 </div>
 
 <?= $footer ?>
