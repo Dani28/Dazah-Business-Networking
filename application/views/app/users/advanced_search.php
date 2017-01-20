@@ -94,7 +94,7 @@
 		</div>
 		<div class="form-group">
 			<div class="col-sm-8">
-				<input id="tags" type="search" name="metadata_tags" class="form-control" placeholder="Skills and Interests Tags" value="<?= isset($query['metadata_tags']) ? $query['metadata_tags'] : '' ?>">
+				<input id="tags" type="search" name="metadata_tags" class="form-control" placeholder="Skills and Interests" value="<?= isset($query['metadata_tags']) ? $query['metadata_tags'] : '' ?>">
 			</div>
 			<div class="col-sm-4">
 				<select id="weight-metadata-tags" name="weight_metadata_tags" class="form-control">
