@@ -105,6 +105,12 @@ class Messages extends CI_Controller
 	{	
 	    $id = decrypt_id($id);
 	    
+	    // page_request() will need this when building out the sidebar
+	    $this->wb_template->assign('conversation_id', $id);
+	    
+	    // Unarchive it (so it will appear in the sidebar)
+	    api_endpoint("conversations/$id/unarchive");
+	    
 	    $request = array(
 	        'url' => "conversations/$id/poll",
 	        'params' => array(
@@ -120,9 +126,6 @@ class Messages extends CI_Controller
 	    {
 	        // Retrieve the conversation
 	        $conversation = api_endpoint("conversations/$id");
-	        
-	        // Unarchive it
-	        api_endpoint("conversations/$id/unarchive");
 	        
 	        $output = process_messages($messages);
 	        	        

@@ -310,27 +310,6 @@ function who_am_i()
     return $WHO_AM_I;
 }
 
-// Conversation list in sidebar
-function build_conversations_sidebar()
-{
-    $CI =& get_instance();
-
-    $properties = array(
-        'include_archived' => false,
-        'offset' => 0,
-        'limit' => 50
-    );
-
-    // Fetch active conversations
-    $conversations = api_endpoint('conversations/report', $properties);
-
-    $CI->wb_template->assign('conversations', $conversations);
-
-    $sidebar = $CI->load->view('app/sidebar', $CI->wb_template->get(), true);
-
-    $CI->wb_template->assign('sidebar', $sidebar, true);
-}
-
 // Show a friendly error message if the API, and otherwise just return the data portion of the response
 function process_response($response, $page_nav = array())
 {

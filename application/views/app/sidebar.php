@@ -9,7 +9,7 @@
 	<div id="active-conversations">
     	<?php foreach ($conversations AS $row): ?>
     	    	
-    		<a id="conversation-<?= $row->conversation->id ?>" data-id="<?= $row->conversation->id ?>" data-user-id="<?= extract_user($row->conversation)->id ?>" class="list-group-item<?= (isset($conversation) AND $conversation->id == $row->conversation->id) ? ' active' : '' ?>" href="<?= conversation_url($row->conversation->id) ?>" data-toggle="tooltip" data-placement="right" title="Last Seen <?= isset(extract_user($row->conversation)->usage->last_activity_timestamp) ? timestamp(extract_user($row->conversation)->usage->last_activity_timestamp) : 'Unknown' ?>">
+    		<a id="conversation-<?= $row->conversation->id ?>" data-id="<?= $row->conversation->id ?>" data-user-id="<?= extract_user($row->conversation)->id ?>" class="list-group-item<?= (isset($conversation_id) AND $conversation_id == $row->conversation->id) ? ' active' : '' ?>" href="<?= conversation_url($row->conversation->id) ?>" data-toggle="tooltip" data-placement="right" title="Last Seen <?= isset(extract_user($row->conversation)->usage->last_activity_timestamp) ? timestamp(extract_user($row->conversation)->usage->last_activity_timestamp) : 'Unknown' ?>">
     			<span class="archive"><span class="fa fa-times" aria-hidden="true"></span></span>
     			<span class="badge"><?= (isset($row->new_message_count) AND $row->new_message_count > 0) ? $row->new_message_count : '' ?></span>
     			<span class="status<?= (isset(extract_user($row->conversation)->usage->online_status) AND extract_user($row->conversation)->usage->online_status) ? ' online' : '' ?>">
