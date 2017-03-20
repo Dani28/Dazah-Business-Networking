@@ -249,6 +249,7 @@ function page_request($request = array(), $include_sidebar = true, $page_nav = a
         $endpoints[] = array(
             'url' => 'conversations/report',
             'params' => array(
+                'bubbled' => true,
                 'include_archived' => false,
                 'offset' => 0,
                 'limit' => 50

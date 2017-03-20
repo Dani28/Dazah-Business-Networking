@@ -7,7 +7,8 @@ class Profile extends CI_Controller
         if ($this->input->is_ajax_request())
         {
             $properties = array(
-                'filter' => 'notifications'
+                'filter' => 'notifications',
+                'bubbled' => true
             );
             
             $notifications = api_endpoint('conversations/report', $properties);

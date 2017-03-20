@@ -85,7 +85,8 @@ class Messages extends CI_Controller
 	{
 	    $properties = array(
 	        'offset' => $offset,
-	        'limit' => 60
+	        'limit' => 60,
+	        'bubbled' => true
 	    );
 	    
 	    $page_nav = generate_page_nav($offset, 60, site_url('messages/report'));
