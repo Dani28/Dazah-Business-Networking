@@ -19,7 +19,7 @@ function batch_api_endpoint($endpoints)
     if ($CURL_HANDLER === null)
     {
         // This is the first time we are using cURL for this request, so initialize a new cURL handler
-        $CURL_HANDLER = curl_init('https://www.dazah.com/api');
+        $CURL_HANDLER = curl_init('https://www.daniweb.com/connect/api');
         curl_setopt($CURL_HANDLER, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($CURL_HANDLER, CURLOPT_ENCODING, '');
         curl_setopt($CURL_HANDLER, CURLOPT_HEADER, false);
@@ -29,7 +29,7 @@ function batch_api_endpoint($endpoints)
     else
     {
         // Let's just change the URL for the existing cURL handler
-        curl_setopt($CURL_HANDLER, CURLOPT_URL, "https://www.dazah.com/api");
+        curl_setopt($CURL_HANDLER, CURLOPT_URL, "https://www.daniweb.com/connect/api");
     }
     
     // Set for just this request        
@@ -67,7 +67,7 @@ function api_endpoint($endpoint, $properties = array(), $post = false, $page_nav
     
     $CI =& get_instance();
     
-    $url = "https://www.dazah.com/api/v2/$endpoint?access_token=$ACCESS_TOKEN";
+    $url = "https://www.daniweb.com/connect/api/v2/$endpoint?access_token=$ACCESS_TOKEN";
     
     // If it's a GET request and there are parameters, add them to the URL string
     if (!$post AND !empty($properties))
@@ -150,13 +150,13 @@ function retrieve_access_token()
         
         if (!$CI->input->get('code'))
         {
-            redirect("https://www.dazah.com/oauth/auth?response_type=code&client_id={$oauth_credentials['client_id']}&scope={$oauth_credentials['scope']}&redirect_uri=".urlencode($current_url));
+            redirect("https://www.daniweb.com/connect/oauth/auth?response_type=code&client_id={$oauth_credentials['client_id']}&scope={$oauth_credentials['scope']}&redirect_uri=".urlencode($current_url));
         }
         
         if ($CURL_HANDLER === null)
         {
             // This is the first time we are using cURL for this request, so initialize a new cURL handler
-            $CURL_HANDLER = curl_init('https://www.dazah.com/oauth/access_token');
+            $CURL_HANDLER = curl_init('https://www.daniweb.com/connect/oauth/access_token');
             curl_setopt($CURL_HANDLER, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($CURL_HANDLER, CURLOPT_ENCODING, '');
             curl_setopt($CURL_HANDLER, CURLOPT_TIMEOUT, 20);     
@@ -165,7 +165,7 @@ function retrieve_access_token()
         else
         {
             // Let's just change the URL for the existing cURL handler
-            curl_setopt($CURL_HANDLER, CURLOPT_URL, 'https://www.dazah.com/oauth/access_token');
+            curl_setopt($CURL_HANDLER, CURLOPT_URL, 'https://www.daniweb.com/connect/oauth/access_token');
         }
         
         curl_setopt($CURL_HANDLER, CURLOPT_HTTPHEADER, array(

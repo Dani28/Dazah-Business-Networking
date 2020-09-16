@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  |--------------------------------------------------------------------------
  |
  | Specify your Dazapp's OAuth credentials
- | You can register a new Dazapp application at https://www.dazah.com/apps/register
+ | You can register a new Dazapp application at https://www.daniweb.com/connect/apps/register
  |
  */
 

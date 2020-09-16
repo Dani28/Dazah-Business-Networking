@@ -166,7 +166,7 @@ class Users extends CI_Controller
 	    
 	    $current_url = site_url('browse/index/' . uniqid());
 	    
-	    redirect("https://www.dazah.com/oauth/auth?response_type=code&client_id={$oauth_credentials['client_id']}&scope={$oauth_credentials['scope']}&redirect_uri=".urlencode($current_url));
+	    redirect("https://www.daniweb.com/connect/oauth/auth?response_type=code&client_id={$oauth_credentials['client_id']}&scope={$oauth_credentials['scope']}&redirect_uri=".urlencode($current_url));
 	}
 	
 	public function index($order_by = 'id', $offset = 0)
