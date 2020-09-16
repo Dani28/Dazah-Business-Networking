@@ -3,11 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
  |--------------------------------------------------------------------------
- | Dazah OAuth Credentials
+ | DaniWeb Connect OAuth Credentials
  |--------------------------------------------------------------------------
  |
- | Specify your Dazapp's OAuth credentials
- | You can register a new Dazapp application at https://www.daniweb.com/connect/apps/register
+ | Specify your Daniapp's OAuth credentials
+ | You can register a new Daniapp application at https://www.daniweb.com/connect/apps/register
  |
  */
 

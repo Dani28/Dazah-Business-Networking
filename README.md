@@ -7,8 +7,8 @@ This app finds your top 100 best matches, sorted by relevancy.
 Browse the elevator pitches of your matches and determine instantly whether there is potential synergy or not.
 Each time you choose to meet or mute someone, a new match is introduced.
 
-This application only taps into a few components of the Dazah API.
-It can be used out-of-the-box, integrated with your exisiting business model, or you can add additional functionality from the Dazah API.
+This application only taps into a few components of the DaniWeb Connect API.
+It can be used out-of-the-box, integrated with your exisiting business model, or you can add additional functionality from the DaniWeb Connect API.
 
 **Check out [https://www.daniweb.com/connect/developers](https://www.daniweb.com/connect/developers) for complete API documentation**
 
