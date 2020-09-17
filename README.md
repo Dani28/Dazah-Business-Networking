@@ -3,6 +3,8 @@
 This app is built on top of the DaniWeb Connect API. The API is a user recommendation engine and chat network designed to power communities and lead generation platforms.
 Members of DaniWeb-powered communities enjoy an ability to discover, connect and message each other through a sophisticated matching algorithm.
 
+**A real-world demo of this application can be reached at [http://app.dazah.com](http://app.dazah.com)**
+
 This app finds your top 100 best matches, sorted by relevancy.
 Browse the elevator pitches of your matches and determine instantly whether there is potential synergy or not.
 Each time you choose to meet or mute someone, a new match is introduced.
