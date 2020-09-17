@@ -10,6 +10,7 @@ Browse the elevator pitches of your matches and determine instantly whether ther
 Each time you choose to meet or mute someone, a new match is introduced.
 
 This application only taps into a few components of the DaniWeb Connect API.
+It was designed as a proof-of-concept that the API could be used to completely power an app without the app having any datastore of its own.
 It can be used out-of-the-box, integrated with your exisiting business model, or you can add additional functionality from the DaniWeb Connect API.
 
 **Check out [https://www.daniweb.com/connect/developers](https://www.daniweb.com/connect/developers) for complete API documentation**
